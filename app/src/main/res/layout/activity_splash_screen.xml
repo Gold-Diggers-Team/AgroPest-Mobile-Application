@@ -39,7 +39,7 @@
         app:text=" Swipe to Get Start"
         app:text_size="16sp"
         app:text_appearance="@style/ThemeOverlay.MaterialComponents.Dialog.Alert"
-        app:slider_locked="true"/>
+        app:slider_locked="false"/>
 
 
 
