@@ -5,29 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Screens.SplashScreenActivity"
-    android:clipChildren="false">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg2" />
+    android:clipChildren="false"
+    android:background="@drawable/bg2">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="700dp"
         android:layout_height="558dp"
         android:layout_marginTop="-30dp"
+        android:layout_marginBottom="172dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:srcCompat="@drawable/logo" />
-
 
     <com.ncorti.slidetoact.SlideToActView
         android:id="@+id/swipeToUnlock"
@@ -38,7 +29,6 @@
         android:elevation="6dp"
         app:area_margin="-8dp"
         app:animation_duration="250"
-        app:bounce_on_start="true"
         app:inner_color="@color/dark_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
