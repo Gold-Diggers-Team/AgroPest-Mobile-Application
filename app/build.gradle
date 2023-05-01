@@ -38,5 +38,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //Add library
-    implementation 'com.ebanx:swipe-button:0.4.0'
+    implementation "com.ncorti:slidetoact:0.10.0"
+
 }
