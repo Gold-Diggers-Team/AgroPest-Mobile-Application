@@ -22,6 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         slideToActView = findViewById(R.id.swipeToUnlock);
+        slideToActView.setBumpVibration(50);
 
        slideToActView.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
            @Override
