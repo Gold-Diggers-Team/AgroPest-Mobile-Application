@@ -34,9 +34,8 @@ public class DashboardActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         drawerButton = findViewById(R.id.drawerButton);
-
-
         //Implement drawer button to get drawer menu
+
         drawerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
