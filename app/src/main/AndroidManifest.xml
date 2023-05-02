@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AgroPESTApplication"
         tools:targetApi="31">
         <activity
-            android:name=".FertilizerActivity"
+            android:name=".Screens.FertilizerActivity"
             android:exported="false" />
         <activity
             android:name=".Screens.DashboardActivity"
