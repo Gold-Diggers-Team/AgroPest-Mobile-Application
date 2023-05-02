@@ -35,6 +35,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     }
 
+    // Implement device back button.
+    // if the user click  the back button, user can see the alert dialog box
     public void onBackPressed(){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(SplashScreenActivity.this);
         alertDialog.setTitle("Exit App");
