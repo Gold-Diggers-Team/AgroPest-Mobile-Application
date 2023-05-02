@@ -27,6 +27,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         slideToActView = findViewById(R.id.swipeToUnlock);
         slideToActView.setBumpVibration(50);
 
+        //implement slide to unlock button
        slideToActView.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
            @Override
            public void onSlideComplete(@NonNull SlideToActView slideToActView) {
