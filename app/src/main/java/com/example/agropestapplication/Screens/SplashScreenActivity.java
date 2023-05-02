@@ -1,8 +1,10 @@
 package com.example.agropestapplication.Screens;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -31,5 +33,24 @@ public class SplashScreenActivity extends AppCompatActivity {
            }
        });
 
+    }
+
+    public void onBackPressed(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(SplashScreenActivity.this);
+        alertDialog.setTitle("Exit App");
+        alertDialog.setMessage("Do you want to exit this app ?");
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              finishAffinity();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 }
