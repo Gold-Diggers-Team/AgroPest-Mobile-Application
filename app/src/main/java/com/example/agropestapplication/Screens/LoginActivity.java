@@ -13,7 +13,7 @@ import com.example.agropestapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button signUp;
+    private Button signUp,logIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +21,20 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         signUp = findViewById(R.id.btnSignUp);
+        logIn = findViewById(R.id.btnSignIn);
 
         // Implement sign up button
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+            }
+        });
+
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
             }
         });
 

@@ -18,6 +18,12 @@
             android:exported="false"
             android:label="@string/title_activity_profile"
             android:theme="@style/Theme.AgroPESTApplication" />
+            android:name=".Screens.FertilizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Screens.DashboardActivity"
+            android:exported="false"
+            android:theme="@style/Theme.LoginScreen" />
         <activity
             android:name=".Screens.RegisterActivity"
             android:exported="false"
