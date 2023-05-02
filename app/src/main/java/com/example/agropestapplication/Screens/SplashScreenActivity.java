@@ -23,9 +23,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        //Bind elements to activity from xml
         slideToActView = findViewById(R.id.swipeToUnlock);
         slideToActView.setBumpVibration(50);
 
+        //implement slide to unlock button
        slideToActView.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
            @Override
            public void onSlideComplete(@NonNull SlideToActView slideToActView) {
@@ -34,7 +36,6 @@ public class SplashScreenActivity extends AppCompatActivity {
        });
 
     }
-
     // Implement device back button.
     // if the user click  the back button, user can see the alert dialog box
     public void onBackPressed(){
