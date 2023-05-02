@@ -23,6 +23,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        //Bind elements to activity from xml
         slideToActView = findViewById(R.id.swipeToUnlock);
         slideToActView.setBumpVibration(50);
 
