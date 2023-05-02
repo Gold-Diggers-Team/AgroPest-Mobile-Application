@@ -24,6 +24,7 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     ImageButton drawerButton;
+    CardView fertilizer;
     CardView profile;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -33,7 +34,7 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
-
+        fertilizer = findViewById(R.id.fertilizer);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         drawerButton = findViewById(R.id.drawerButton);
@@ -60,6 +61,12 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        //implement fertilizer screen open button
+        fertilizer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),FertilizerActivity.class));
+                
         //Implement profile button
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
