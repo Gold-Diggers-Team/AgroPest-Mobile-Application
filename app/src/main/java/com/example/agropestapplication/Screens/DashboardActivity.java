@@ -3,10 +3,12 @@ package com.example.agropestapplication.Screens;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +24,7 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     ImageButton drawerButton;
+    CardView fertilizer;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -30,7 +33,7 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
-
+        fertilizer = findViewById(R.id.fertilizer);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         drawerButton = findViewById(R.id.drawerButton);
@@ -53,6 +56,14 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 return false;
+            }
+        });
+
+        //implement fertilizer screen open button
+        fertilizer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),FertilizerActivity.class));
             }
         });
 }
