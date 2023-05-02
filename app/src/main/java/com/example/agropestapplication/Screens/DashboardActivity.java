@@ -25,6 +25,7 @@ public class DashboardActivity extends AppCompatActivity {
     private NavigationView navigationView;
     ImageButton drawerButton;
     CardView fertilizer;
+    CardView profile;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -37,6 +38,7 @@ public class DashboardActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         drawerButton = findViewById(R.id.drawerButton);
+        profile = findViewById(R.id.profile);
         //Implement drawer button to get drawer menu
 
         drawerButton.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +66,12 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),FertilizerActivity.class));
+                
+        //Implement profile button
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
             }
         });
 }
