@@ -1,20 +1,18 @@
 package com.example.agropestapplication.Screens;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toolbar;
 
 import com.example.agropestapplication.R;
 import com.google.android.material.navigation.NavigationView;
@@ -24,8 +22,8 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     ImageButton drawerButton;
-    CardView pesticides,fertilizer,profile;
-   
+    CardView pesticides, fertilizer, profile;
+
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ public class DashboardActivity extends AppCompatActivity {
         drawerButton = findViewById(R.id.drawerButton);
         pesticides = findViewById(R.id.pesticides);
         profile = findViewById(R.id.profile);
-        
+
         //Implement drawer button to get drawer menu
         drawerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +62,7 @@ public class DashboardActivity extends AppCompatActivity {
         pesticides.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),PesticidesActivity.class));
+                startActivity(new Intent(getApplicationContext(), PesticidesActivity.class));
             }
         });
 
@@ -72,15 +70,17 @@ public class DashboardActivity extends AppCompatActivity {
         fertilizer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),FertilizerActivity.class));
-                
+                startActivity(new Intent(getApplicationContext(), FertilizerActivity.class));
+            }
+        });
+
+
         //Implement profile button
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             }
         });
-
-}
+    }
 }
