@@ -24,9 +24,8 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     ImageButton drawerButton;
-    CardView fertilizer;
-    CardView profile;
-
+    CardView pesticides,fertilizer,profile;
+   
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +37,10 @@ public class DashboardActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         drawerButton = findViewById(R.id.drawerButton);
+        pesticides = findViewById(R.id.pesticides);
         profile = findViewById(R.id.profile);
+        
         //Implement drawer button to get drawer menu
-
         drawerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,11 +53,18 @@ public class DashboardActivity extends AppCompatActivity {
                 this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 return false;
+            }
+        });
+
+        //implement pesticides screen open button
+        pesticides.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),PesticidesActivity.class));
             }
         });
 
@@ -74,5 +81,6 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
             }
         });
+
 }
 }
