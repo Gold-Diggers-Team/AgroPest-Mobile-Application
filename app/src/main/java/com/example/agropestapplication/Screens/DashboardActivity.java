@@ -24,8 +24,8 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     ImageButton drawerButton;
-    CardView pesticides;
-
+    CardView pesticides,fertilizer,profile;
+   
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +33,14 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
-
+        fertilizer = findViewById(R.id.fertilizer);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         drawerButton = findViewById(R.id.drawerButton);
         pesticides = findViewById(R.id.pesticides);
+        profile = findViewById(R.id.profile);
+        
         //Implement drawer button to get drawer menu
-
         drawerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,10 +60,25 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        //implement pesticides screen open button
         pesticides.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),PesticidesActivity.class));
+            }
+        });
+
+        //implement fertilizer screen open button
+        fertilizer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),FertilizerActivity.class));
+                
+        //Implement profile button
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
             }
         });
 
