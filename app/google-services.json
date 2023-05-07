@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "523198879724",
+    "project_id": "agropest-application-42f7f",
+    "storage_bucket": "agropest-application-42f7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523198879724:android:67a37520f1dd302f0e92c9",
+        "android_client_info": {
+          "package_name": "com.example.agropestapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523198879724-m0qu1v5vnvn1sogc63utmersifkp1emk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDohDU8HW5eDGGVwOiGyxDfhCIYwbz0U6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523198879724-m0qu1v5vnvn1sogc63utmersifkp1emk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
