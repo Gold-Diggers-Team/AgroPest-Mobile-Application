@@ -138,7 +138,6 @@
                     app:iss_corner_radius="35"
                     app:iss_delay="1000"
                     app:iss_period="1500"/>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
