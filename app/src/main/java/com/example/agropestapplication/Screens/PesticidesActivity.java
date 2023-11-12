@@ -1,14 +1,17 @@
 package com.example.agropestapplication.Screens;
 
+
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.agropestapplication.R;
+
 
 public class PesticidesActivity extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
@@ -17,8 +20,18 @@ public class PesticidesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesticides);
 
+        CardView pesticidesCheck = findViewById(R.id.checkPesticides);
+
+        pesticidesCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),PesticidePrice.class));
+            }
+        });
 
 
 
     }
+
+
 }
