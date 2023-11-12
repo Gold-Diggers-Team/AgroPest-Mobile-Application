@@ -20,7 +20,7 @@ public class PesticidesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesticides);
 
-        CardView pesticidesCheck = findViewById(R.id.checkPesticides);
+        CardView pesticidesCheck = findViewById(R.id.checkFertilizer);
 
         pesticidesCheck.setOnClickListener(new View.OnClickListener() {
             @Override
