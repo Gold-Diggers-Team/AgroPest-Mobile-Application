@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Screens.PesticidePrice"
+            android:exported="false" />
         <activity
             android:name=".Screens.PesticidesActivity"
             android:exported="false"
@@ -24,7 +26,6 @@
             android:name=".Screens.FertilizerActivity"
             android:exported="false"
             android:theme="@style/Theme.LoginScreen" />
-
         <activity
             android:name=".Screens.ProfileActivity"
             android:exported="false"

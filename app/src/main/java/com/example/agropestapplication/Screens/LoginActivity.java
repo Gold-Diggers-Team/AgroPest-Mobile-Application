@@ -62,34 +62,38 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String Email,Password;
-                Email = String.valueOf(username);
-                Password = String.valueOf(password);
+                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+                startActivity(intent);
 
-                if(TextUtils.isEmpty(Email)){
-                    username.setError("Email is required");
-                    return;
-                }
-                if(TextUtils.isEmpty(Password)){
-                    password.setError("Password is required");
-                    return;
-                }
-
-                mAuth.signInWithEmailAndPassword(Email, Password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-
-                                    Toast.makeText(getApplicationContext(), "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+//
+//                String Email,Password;
+//                Email = String.valueOf(username);
+//                Password = String.valueOf(password);
+//
+//                if(TextUtils.isEmpty(Email)){
+//                    username.setError("Email is required");
+//                    return;
+//                }
+//                if(TextUtils.isEmpty(Password)){
+//                    password.setError("Password is required");
+//                    return;
+//                }
+//
+//                mAuth.signInWithEmailAndPassword(Email, Password)
+//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                                if (task.isSuccessful()) {
+//                                    Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+//                                    startActivity(intent);
+//                                    finish();
+//                                } else {
+//
+//                                    Toast.makeText(getApplicationContext(), "Authentication failed.",
+//                                            Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
 
 
 

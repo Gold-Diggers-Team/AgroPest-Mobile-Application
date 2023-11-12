@@ -14,8 +14,13 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.agropestapplication.R;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -23,6 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
     private NavigationView navigationView;
     ImageButton drawerButton;
     CardView pesticides, fertilizer, profile;
+    ImageSlider imageSlider;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -37,6 +43,18 @@ public class DashboardActivity extends AppCompatActivity {
         drawerButton = findViewById(R.id.drawerButton);
         pesticides = findViewById(R.id.pesticides);
         profile = findViewById(R.id.profile);
+        imageSlider = findViewById(R.id.imageSlider);
+
+
+        // Set up the first image slider
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.banner0, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.banner1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.banner2, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.image4, ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+
 
         //Implement drawer button to get drawer menu
         drawerButton.setOnClickListener(new View.OnClickListener() {
