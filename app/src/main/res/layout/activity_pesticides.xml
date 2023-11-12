@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +68,7 @@
         android:layout_height="110dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="130dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,20 +77,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.13999999"
-        android:backgroundTint="@color/white">
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:id="@+id/my_view" />
+        android:backgroundTint="#247BDB">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:weightSum="10"
             android:orientation="horizontal"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:background="#247BDB">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -113,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="About "
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -135,13 +132,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/about"
         app:layout_constraintVertical_bias="0.0"
-        android:backgroundTint="@color/white">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:id="@+id/my_view2" />
+        android:backgroundTint="#00A000">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,6 +162,7 @@
                     android:layout_height="wrap_content"
                     android:text="Available pesticides &amp; fertilizers "
                     android:textAlignment="center"
+                    android:textStyle="bold"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
@@ -193,13 +185,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkPesticides"
         app:layout_constraintVertical_bias="0.0"
-        android:backgroundTint="@color/white">
+        android:backgroundTint="#EEAF4B">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:id="@+id/my_view3" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -225,6 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Details according to the crop products "
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
@@ -233,61 +221,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/qa"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsPesticides"
-        app:layout_constraintVertical_bias="0.0"
-        android:backgroundTint="@color/white">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:id="@+id/my_view4" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="10"
-            android:orientation="horizontal"
-            android:layout_margin="5dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/qa" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="7"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Q&amp;A "
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
 
 
