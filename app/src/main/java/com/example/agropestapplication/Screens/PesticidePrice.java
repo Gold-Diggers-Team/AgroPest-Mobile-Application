@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.agropestapplication.Adapter.PesticidesAdapter;
+import com.example.agropestapplication.Adapter.Adapter;
 import com.example.agropestapplication.Model.ModelClass;
 import com.example.agropestapplication.R;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +22,7 @@ public class PesticidePrice extends AppCompatActivity {
 
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
-    PesticidesAdapter adapter;
+    Adapter adapter;
     ArrayList<ModelClass> list;
 
     @Override
@@ -36,7 +36,7 @@ public class PesticidePrice extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        adapter = new PesticidesAdapter(this,list);
+        adapter = new Adapter(this,list);
         recyclerView.setAdapter(adapter);
 
 
