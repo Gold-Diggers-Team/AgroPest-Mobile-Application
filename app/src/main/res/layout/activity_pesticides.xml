@@ -118,7 +118,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/checkPesticides"
+        android:id="@+id/checkFertilizer"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_marginStart="30dp"
@@ -183,7 +183,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkPesticides"
+        app:layout_constraintTop_toBottomOf="@+id/checkFertilizer"
         app:layout_constraintVertical_bias="0.0"
         android:backgroundTint="#EEAF4B">
 
