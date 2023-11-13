@@ -29,7 +29,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.peseticdes,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.peseticdes_fertilizer,parent,false);
         return  new ViewHolder(v);
     }
 
@@ -39,7 +39,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.name.setText(modelClass.getName());
         holder.price.setText(modelClass.getPrice());
         holder.isAvilable.setText(modelClass.getIsAvilable());
-        holder.isAvilable.setText(modelClass.getIsAvilableFertlizer());
+        holder.isAvailableFertlizer.setText(modelClass.getIsAvilableFertlizer());
         Glide.with(context).load(list.get(position).getImage()).into(holder.image);
 
         // Check the condition (case-insensitive)
@@ -49,6 +49,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }else if("Out-of Stock".equalsIgnoreCase(modelClass.getIsAvilable())){
             holder.itemView.setBackgroundResource(R.drawable.is_not_available);
         }
+
 
         // Check the condition (case-insensitive)
         if ("Available".equalsIgnoreCase(modelClass.getIsAvilableFertlizer())) {
@@ -67,7 +68,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public static class ViewHolder extends  RecyclerView.ViewHolder{
 
-        TextView name,price,isAvilable;
+        TextView name,price,isAvilable,isAvailableFertlizer;
         ImageView image;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +76,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             name = itemView.findViewById(R.id.name);
             price = itemView.findViewById(R.id.price);
             isAvilable= itemView.findViewById(R.id.isAvailable);
+            isAvailableFertlizer = itemView.findViewById(R.id.isAvailableFertlizer);
         }
     }
 }
