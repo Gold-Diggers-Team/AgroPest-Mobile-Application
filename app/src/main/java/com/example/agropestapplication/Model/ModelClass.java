@@ -7,6 +7,19 @@ public class ModelClass {
     String isAvilableFertlizer;
     String name;
     String price;
+    String depName,tel,location;
+
+    public String getDepName() {
+        return depName;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public String getLocation() {
+        return location;
+    }
 
     public String getDescription() {
         return description;
