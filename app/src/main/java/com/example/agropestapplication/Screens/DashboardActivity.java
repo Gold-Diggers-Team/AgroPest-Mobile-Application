@@ -27,7 +27,7 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     ImageButton drawerButton;
-    CardView pesticides, fertilizer, profile;
+    CardView pesticides, fertilizer, profile, agriInfo;
     ImageSlider imageSlider;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -44,6 +44,7 @@ public class DashboardActivity extends AppCompatActivity {
         pesticides = findViewById(R.id.pesticides);
         profile = findViewById(R.id.profile);
         imageSlider = findViewById(R.id.imageSlider);
+        agriInfo = findViewById(R.id.agriInfo);
 
 
         // Set up the first image slider
@@ -98,6 +99,14 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            }
+        });
+
+        //Implement agriInfo button
+        agriInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AgriServiceActivity.class));
             }
         });
     }
