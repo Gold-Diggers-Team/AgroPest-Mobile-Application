@@ -1,12 +1,14 @@
 package com.example.agropestapplication.Adapter;
 
 import android.content.Context;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -36,7 +38,14 @@ public class AgricultureServiceAdapter extends RecyclerView.Adapter<AgricultureS
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ModelClass modelClass = list.get(position);
         holder.depName.setText(modelClass.getDepName());
+        // Set the phone number and make it clickable
         holder.contact.setText(modelClass.getTel());
+
+        // Set the link color
+        int linkColor = ContextCompat.getColor(context, R.color.purple_700); // Replace with your color resource
+        holder.contact.setLinkTextColor(linkColor);
+
+        Linkify.addLinks(holder.contact, Linkify.PHONE_NUMBERS);
         holder.location.setText(modelClass.getLocation());
     }
 
