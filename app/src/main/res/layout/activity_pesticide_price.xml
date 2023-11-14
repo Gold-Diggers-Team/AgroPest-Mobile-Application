@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Screens.PesticidesActivity"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    tools:context=".Screens.PesticidesActivity">
 
     <ImageView
         android:id="@+id/imageView6"

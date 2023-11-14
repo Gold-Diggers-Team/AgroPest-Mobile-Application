@@ -6,4 +6,6 @@
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="available"><![CDATA[Available pesticides & Crop products]]></string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
 </resources>

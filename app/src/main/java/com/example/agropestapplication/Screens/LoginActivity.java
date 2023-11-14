@@ -3,14 +3,22 @@ package com.example.agropestapplication.Screens;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.agropestapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -19,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button signUp,logIn;
     EditText username, password;
     FirebaseAuth mAuth;
+
 
     @Override
     public void onStart() {
@@ -39,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
         signUp = findViewById(R.id.btnSignUp);
         logIn = findViewById(R.id.btnSignIn);
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        username = findViewById(R.id.usernameLogin);
+        password = findViewById(R.id.passwordLogin);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -56,42 +65,50 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                startActivity(intent);
+                String Username = username.getText().toString().trim();
+                String Password = password.getText().toString();
 
-//
-//                String Email,Password;
-//                Email = String.valueOf(username);
-//                Password = String.valueOf(password);
-//
-//                if(TextUtils.isEmpty(Email)){
-//                    username.setError("Email is required");
-//                    return;
-//                }
-//                if(TextUtils.isEmpty(Password)){
-//                    password.setError("Password is required");
-//                    return;
-//                }
-//
-//                mAuth.signInWithEmailAndPassword(Email, Password)
-//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (task.isSuccessful()) {
-//                                    Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-//                                    startActivity(intent);
-//                                    finish();
-//                                } else {
-//
-//                                    Toast.makeText(getApplicationContext(), "Authentication failed.",
-//                                            Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
+                if(TextUtils.isEmpty(Username)){
+                    username.setError("Email is required");
+                    return;
+                }
+                if (!isValidEmail(Username)) {
+                    username.setError("Enter a valid email");
+                    return;
+                }
+                if(TextUtils.isEmpty(Password)){
+                    password.setError("Password is required");
+                    return;
+                }
+                Log.d("Authentication", "Attempting to sign in with email: " + Username);
+
+                mAuth.signInWithEmailAndPassword(Username, Password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Login successful",
+                                            Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Log.e("AuthenticationFailed", "Authentication failed: " + task.getException());
+                                    Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
 
 
 
             }
+
+            private boolean isValidEmail(CharSequence target) {
+                return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+            }
+
+
         });
 
     }
