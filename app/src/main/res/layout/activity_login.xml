@@ -36,7 +36,7 @@
         app:hintTextColor="@color/white">
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/usernameLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -44,7 +44,7 @@
             android:background="@drawable/edit_text_field"
             android:drawableStart="@drawable/person"
             android:drawablePadding="10dp"
-            android:hint="@string/username"
+            android:hint="@string/email"
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -67,7 +67,7 @@
         app:hintTextColor="@color/white">
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/passwordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/username1"
