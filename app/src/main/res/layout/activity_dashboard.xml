@@ -67,7 +67,7 @@
             app:srcCompat="@drawable/notifications" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/user"
+            android:id="@+id/userImage"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="20dp"
@@ -93,11 +93,11 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/user"
+            app:layout_constraintBottom_toBottomOf="@+id/userImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/user"
-            app:layout_constraintTop_toTopOf="@+id/user" />
+            app:layout_constraintStart_toEndOf="@+id/userImage"
+            app:layout_constraintTop_toTopOf="@+id/userImage" />
 
         <TextView
             android:id="@+id/textView6"

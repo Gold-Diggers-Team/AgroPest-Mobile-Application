@@ -6,11 +6,18 @@ public class User {
     private String email;
     private String phoneNumber;
     private String imageUrl;
+    private String password;
 
-    public User(String username, String email, String phoneNumber) {
+    // Add a default constructor
+    public User() {
+    }
+
+    public User(String username, String email, String phoneNumber, String imageUrl,String password) {
         this.username = username;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.imageUrl = imageUrl;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -28,4 +35,5 @@ public class User {
     public String getImageUrl() {
         return imageUrl;
     }
+
 }

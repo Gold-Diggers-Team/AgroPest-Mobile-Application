@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -32,15 +35,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class DashboardActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private FirebaseAuth mAuth;
     ImageButton drawerButton;
     CardView pesticides, fertilizer, profile, agriInfo;
     ImageSlider imageSlider;
-    TextView name;
+    TextView name,username,email;
+    CircleImageView userImage,image;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private FirebaseAuth mAuth;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -58,9 +64,60 @@ public class DashboardActivity extends AppCompatActivity {
         imageSlider = findViewById(R.id.imageSlider);
         agriInfo = findViewById(R.id.agriInfo);
         name = findViewById(R.id.textView5);
+        userImage = findViewById(R.id.userImage);
 
+        View header = navigationView.getHeaderView(0);
+        image = header.findViewById(R.id.userImage);
+        username = header.findViewById(R.id.name);
+        email = header.findViewById(R.id.email);
 
         mAuth = FirebaseAuth.getInstance();
+
+        // Inside mAuth.addAuthStateListener
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // Retrieve user details from Firebase Realtime Database
+                    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
+                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                // User details found, update the UI
+                                User user = dataSnapshot.getValue(User.class);
+                                if (user != null) {
+                                    Log.d("DashboardActivity", "User details found. Username: " + user.getUsername());
+
+                                    name.setText(user.getUsername());
+                                    email.setText(user.getEmail());
+                                    username.setText(user.getUsername());
+
+                                    Glide.with(getApplicationContext()).load(user.getImageUrl()).into(userImage);
+                                    Glide.with(getApplicationContext()).load(user.getImageUrl()).into(image);
+                                    Log.e("DashboardActivity", "User imageUrl is empty");
+
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            // Handle the error
+                            Log.e("DatabaseError", "Error reading user details", databaseError.toException());
+                        }
+                    });
+                } else {
+                    // User is signed out, redirect to the login screen
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    // Don't call finish() here
+                }
+            }
+        });
+
+
         // Set up the first image slider
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.banner0, ScaleTypes.FIT));
@@ -79,6 +136,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+
         // Implement sliding function to get the drawer menu
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -89,7 +147,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.nav_logout:
                         logout();
                         break;
@@ -100,6 +158,7 @@ public class DashboardActivity extends AppCompatActivity {
 
                 return true;
             }
+
             private void logout() {
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
