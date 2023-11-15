@@ -18,18 +18,24 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.agropestapplication.Model.User;
 import com.example.agropestapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.yalantis.ucrop.UCrop;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -37,7 +43,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class RegisterActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
-
+    private static final int CROP_IMAGE_REQUEST_CODE = 2;
     EditText username, email, password, phoneNumber, confirmPassword;
     Button btnSignIn, btnReg;
     ImageButton selectImage;
@@ -61,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameReg);
         btnReg = findViewById(R.id.btnReg);
         selectImage = findViewById(R.id.selectImage);
-        userImage = findViewById(R.id.user);
+        userImage = findViewById(R.id.userImage);
 
         mAuth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance();
@@ -82,14 +88,16 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+
     private void openFileChooser() {
+        // Start image picker
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 
-    @Override
+        @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -165,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressDialog.dismiss(); // Dismiss the progress dialog
                                 if (task.isSuccessful()) {
-                                    uploadImage(emailText);
+                                    uploadImage(emailText, usernameText, phoneNumberText, passwordText);
                                 } else {
                                     Log.e("AuthFailed", "Authentication failed: " + task.getException());
                                     Toast.makeText(RegisterActivity.this, "Registration failed. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -185,27 +193,48 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void uploadImage(final String emailText) {
+    private void uploadImage(final String emailText, final String usernameText, final String phoneNumberText, final String passwordText) {
         if (filePath != null) {
             StorageReference ref = storageReference.child("images/" + emailText + ".jpg");
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
             byte[] data = baos.toByteArray();
 
-            ref.putBytes(data).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            UploadTask uploadTask = ref.putBytes(data);
+            uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()) {
+                        // Image upload successful, now save user details to the database
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intent);
-                        finish();
+
+                        // Get the download URL
+                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri downloadUrl) {
+                                // Set imageUrl in the userProfile
+                                User userProfile = new User(usernameText, emailText, phoneNumberText, downloadUrl.toString(), passwordText);
+
+                                // Save user details to the database
+                                DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+                                usersRef.child(user.getUid()).setValue(userProfile);
+
+                                // Show a success message
+                                Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+
+                                // Redirect to login activity
+                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
                     } else {
+                        // Image upload failed
                         Toast.makeText(RegisterActivity.this, "Image upload failed", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
     }
+
 }

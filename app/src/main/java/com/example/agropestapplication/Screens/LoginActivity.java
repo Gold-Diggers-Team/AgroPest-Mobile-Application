@@ -81,10 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                     password.setError("Password is required");
                     return;
                 }
-                Log.d("Authentication", "Attempting to sign in with email: " + Username);
 
                 // Show a progress dialog
-                final ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
                 progressDialog.setMessage("Login...");
                 progressDialog.show();
 
@@ -99,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
                                     startActivity(intent);
-                                    finish();
                                 } else {
                                     progressDialog.dismiss();
                                     Log.e("AuthenticationFailed", "Authentication failed: " + task.getException());
@@ -108,8 +106,6 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
-
 
             }
 
