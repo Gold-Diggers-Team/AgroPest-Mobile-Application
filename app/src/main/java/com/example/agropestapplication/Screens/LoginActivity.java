@@ -1,5 +1,6 @@
 package com.example.agropestapplication.Screens;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -82,17 +83,25 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 Log.d("Authentication", "Attempting to sign in with email: " + Username);
 
+                // Show a progress dialog
+                final ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+                progressDialog.setMessage("Login...");
+                progressDialog.show();
+
+
                 mAuth.signInWithEmailAndPassword(Username, Password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Login successful",
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
+                                    progressDialog.dismiss();
                                     Log.e("AuthenticationFailed", "Authentication failed: " + task.getException());
                                     Toast.makeText(getApplicationContext(), "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
