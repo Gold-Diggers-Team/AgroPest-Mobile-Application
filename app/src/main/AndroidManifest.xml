@@ -39,7 +39,7 @@
             android:name=".Screens.ProfileActivity"
             android:exported="false"
             android:label="@string/title_activity_profile"
-            android:theme="@style/Theme.AgroPESTApplication" />
+            android:theme="@style/Theme.LoginScreen" />
         <activity
             android:name=".Screens.DashboardActivity"
             android:exported="false"
@@ -47,6 +47,7 @@
         <activity
             android:name=".Screens.RegisterActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize|adjustPan"
             android:theme="@style/Theme.LoginScreen" />
         <activity
             android:name=".Screens.LoginActivity"
