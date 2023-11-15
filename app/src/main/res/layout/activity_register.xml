@@ -36,7 +36,7 @@
         app:srcCompat="@drawable/header_line" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/user"
+        android:id="@+id/userImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="40dp"
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toTopOf="@+id/Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user">
+        app:layout_constraintTop_toBottomOf="@+id/userImage">
 
         <EditText
             android:id="@+id/usernameReg"
@@ -235,11 +235,11 @@
         android:layout_marginStart="-13dp"
         android:background="@drawable/select_image"
         android:src="@drawable/camera"
-        app:layout_constraintBottom_toBottomOf="@+id/user"
+        app:layout_constraintBottom_toBottomOf="@+id/userImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/user"
-        app:layout_constraintTop_toTopOf="@+id/user"
+        app:layout_constraintStart_toEndOf="@+id/userImage"
+        app:layout_constraintTop_toTopOf="@+id/userImage"
         app:layout_constraintVertical_bias="1.0" />
 
 
