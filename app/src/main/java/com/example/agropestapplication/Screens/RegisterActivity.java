@@ -17,22 +17,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.agropestapplication.Model.User;
 import com.example.agropestapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    EditText username, email, password, phoneNumber;
+    EditText username, email, password, phoneNumber,confirmPassword;
     Button btnSignIn, btnReg;
     ImageButton selectImage;
     Uri filePath;
@@ -58,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+        confirmPassword = findViewById(R.id.passwordConfirmReg);
         phoneNumber = findViewById(R.id.phoneNumberReg);
         username = findViewById(R.id.usernameReg);
         btnReg = findViewById(R.id.btnReg);
@@ -107,6 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void registerUser() {
         final String emailText = email.getText().toString().trim();
         final String passwordText = password.getText().toString().trim();
+        final String confirmPasswordText = confirmPassword.getText().toString().trim();
         final  String phoneNumberText = phoneNumber.getText().toString().trim();
         final String usernameText = username.getText().toString().trim();
 
@@ -138,11 +136,14 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
             return;
         }
+    if(!confirmPasswordText.matches(passwordText)){
+        confirmPassword.setError("Password does not match");
+    }
 
-        mAuth.createUserWithEmailAndPassword(emailText, passwordText)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+        mAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             uploadImage(emailText);
                         } else {
