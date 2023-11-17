@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import com.example.agropestapplication.Adapter.AgricultureServiceAdapter;
@@ -40,15 +41,21 @@ public class FaqActivity extends AppCompatActivity {
         adapter = new FAQuestionAdapter(this, list);
         recyclerView.setAdapter(adapter);
 
+        // Show a progress dialog
+        final ProgressDialog progressDialog = new ProgressDialog(FaqActivity.this);
+        progressDialog.setMessage("Please wait");
+        progressDialog.show();
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    progressDialog.dismiss();
                     ModelClass modelClass = dataSnapshot.getValue(ModelClass.class);
                     list.add(modelClass);
                 }
+                progressDialog.dismiss();
                 adapter.notifyDataSetChanged();
             }
 
