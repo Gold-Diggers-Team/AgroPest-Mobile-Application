@@ -151,6 +151,9 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.nav_logout:
                         logout();
                         break;
+                    case R.id.nav_faq:
+                        Intent intent = new Intent(getApplicationContext(),FaqActivity.class);
+                        startActivity(intent);
                     default:
                         return false;
                 }
