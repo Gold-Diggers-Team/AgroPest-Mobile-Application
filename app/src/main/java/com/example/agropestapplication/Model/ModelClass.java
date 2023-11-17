@@ -8,6 +8,15 @@ public class ModelClass {
     String name;
     String price;
     String depName,tel,location;
+    String question,answer;
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
 
     public String getDepName() {
         return depName;
