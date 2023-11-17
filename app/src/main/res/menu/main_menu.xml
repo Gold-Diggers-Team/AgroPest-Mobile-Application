@@ -12,10 +12,6 @@
             android:id="@+id/nav_cycle"
             android:title="Guidelines" />
 
-        <item
-
-            android:id="@+id/nav_bus"
-            android:title="Terms &amp; Conditions" />
     </group>
 
     <group android:checkableBehavior="single">
