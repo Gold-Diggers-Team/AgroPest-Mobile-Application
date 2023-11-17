@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
@@ -27,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PesticidePrice extends AppCompatActivity {
 
@@ -49,7 +51,7 @@ public class PesticidePrice extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        adapter = new Adapter(this,list);
+        adapter = new Adapter(this, list);
         recyclerView.setAdapter(adapter);
 
         // Set up Firebase Cloud Messaging
@@ -62,6 +64,7 @@ public class PesticidePrice extends AppCompatActivity {
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<ModelClass> newList = new ArrayList<>();
@@ -73,15 +76,14 @@ public class PesticidePrice extends AppCompatActivity {
                 for (ModelClass newItem : newList) {
                     boolean isNewItem = true;
                     for (ModelClass existingItem : list) {
-                        if (newItem.getName().equals(existingItem.getName()) && newItem.getPrice() == existingItem.getPrice()) {
+                        if (newItem.getName().equals(existingItem.getName()) && Objects.equals(newItem.getPrice(), existingItem.getPrice())) {
                             isNewItem = false;
                             break;
                         }
                     }
 
                     if (isNewItem) {
-                        sendFCMNotification("New Item Added", "A new pesticides has been added Please check.");
-
+                        sendFCMNotification();
                         list.add(newItem);
                         adapter.notifyDataSetChanged();
                     }
@@ -96,11 +98,11 @@ public class PesticidePrice extends AppCompatActivity {
 
     }
 
-    private void sendFCMNotification(String title, String body) {
+    private void sendFCMNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle(title)
-                .setContentText(body)
+                .setContentTitle("New Item Added")
+                .setContentText("A new pesticides has been added Please check.")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
