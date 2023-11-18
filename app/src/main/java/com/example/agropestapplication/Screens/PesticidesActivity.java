@@ -21,11 +21,19 @@ public class PesticidesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pesticides);
 
         CardView pesticidesCheck = findViewById(R.id.checkFertilizer);
+        CardView detailsPesticides = findViewById(R.id.detailsPesticides);
 
         pesticidesCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),PesticidePrice.class));
+            }
+        });
+
+        detailsPesticides.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),DetailsPesticidesCropActivity.class));
             }
         });
 
