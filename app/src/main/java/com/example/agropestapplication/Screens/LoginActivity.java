@@ -1,5 +1,6 @@
 package com.example.agropestapplication.Screens;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.agropestapplication.BottomSheetFragment;
 import com.example.agropestapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button signUp,logIn;
+    private Button signUp,logIn,forgetPassword;
     EditText username, password;
     FirebaseAuth mAuth;
 
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         logIn = findViewById(R.id.btnSignIn);
         username = findViewById(R.id.usernameLogin);
         password = findViewById(R.id.passwordLogin);
+        forgetPassword = findViewById(R.id.forgetPassword);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -61,6 +65,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
             }
         });
+
+        // Implement sign up button
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+                bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
+            }
+        });
+
 
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override

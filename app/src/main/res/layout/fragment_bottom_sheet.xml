@@ -1,0 +1,41 @@
+<!-- fragment_bottom_sheet.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#6B000000"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/white"
+        android:drawablePadding="10dp">
+
+        <EditText
+            android:id="@+id/emailEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent_white"
+            android:hint="Email"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <Button
+        android:textAllCaps="false"
+        android:backgroundTint="@color/transparent_white"
+        android:id="@+id/resetPasswordButton"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Password"/>
+
+</LinearLayout>

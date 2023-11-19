@@ -136,7 +136,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/forgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"

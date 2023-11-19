@@ -84,6 +84,8 @@ dependencies {
     implementation 'com.github.yalantis:ucrop:2.2.6'
     implementation 'com.google.firebase:firebase-messaging:23.0.0'  // Use the latest version
     implementation 'com.codesgood:justifiedtextview:1.1.0'
+    implementation 'androidx.fragment:fragment:1.4.0'
+
 
 
 
