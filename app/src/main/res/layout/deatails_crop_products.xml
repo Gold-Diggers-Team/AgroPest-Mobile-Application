@@ -30,10 +30,14 @@
         android:id="@+id/speakAloud"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/volume"
-        android:background="@android:color/transparent"
+        android:layout_alignTop="@+id/name"
+        android:layout_alignBottom="@+id/name"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"/>
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="-24dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/volume" />
 
     <TextView
         android:id="@+id/description"
