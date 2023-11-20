@@ -1,5 +1,6 @@
 package com.example.agropestapplication.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -33,6 +35,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return  new ViewHolder(v);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ModelClass modelClass = list.get(position);
@@ -45,18 +48,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         // Check the condition (case-insensitive)
         if ("Available".equalsIgnoreCase(modelClass.getIsAvilable())) {
             // Set a custom Drawable when the condition is true
-            holder.itemView.setBackgroundResource(R.drawable.is_avilable);
+            holder.cardView.setBackgroundResource(R.color.is_avilable);
         }else if("Out-of Stock".equalsIgnoreCase(modelClass.getIsAvilable())){
-            holder.itemView.setBackgroundResource(R.drawable.is_not_available);
+            holder.cardView.setBackgroundResource(R.color.is_not_available);
         }
 
 
         // Check the condition (case-insensitive)
         if ("Available".equalsIgnoreCase(modelClass.getIsAvilableFertlizer())) {
             // Set a custom Drawable when the condition is true
-            holder.itemView.setBackgroundResource(R.drawable.is_avilable);
+            holder.cardView.setBackgroundResource(R.color.is_avilable);
         }else if("Out-of Stock".equalsIgnoreCase(modelClass.getIsAvilableFertlizer())){
-            holder.itemView.setBackgroundResource(R.drawable.is_not_available);
+            holder.cardView.setBackgroundResource(R.color.is_not_available);
         }
 
     }
@@ -69,6 +72,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public static class ViewHolder extends  RecyclerView.ViewHolder{
 
         TextView name,price,isAvilable,isAvailableFertlizer;
+        CardView cardView;
         ImageView image;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +81,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             price = itemView.findViewById(R.id.price);
             isAvilable= itemView.findViewById(R.id.isAvailable);
             isAvailableFertlizer = itemView.findViewById(R.id.isAvailableFertlizer);
+            cardView = itemView.findViewById(R.id.isAvailableBack);
         }
     }
 }
