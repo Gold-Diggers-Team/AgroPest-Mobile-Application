@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:letterSpacing="0.1"
-        android:text="Agriculture Services"
+        android:text="Agriculture Services \n Locations"
         android:textAlignment="center"
         android:textColor="#EEAF4B"
         android:textSize="15sp"
