@@ -4,11 +4,6 @@
     <group android:checkableBehavior="single">
         <item
 
-            android:id="@+id/nav_home"
-            android:title="Select language" />
-
-        <item
-
             android:id="@+id/nav_cycle"
             android:title="Guidelines" />
 
@@ -22,12 +17,6 @@
                 <group android:checkableBehavior="single">
 
                     <item
-
-                        android:id="@+id/nav_login"
-                        android:title="Login" />
-
-                    <item
-
                         android:id="@+id/nav_profile"
                         android:title="Profile" />
 
@@ -55,13 +44,8 @@
 
                 <item
 
-                    android:id="@+id/nav_share"
-                    android:title="Share" />
-
-                <item
-
-                    android:id="@+id/nav_rate"
-                    android:title="Rate Us" />
+                    android:id="@+id/feedback"
+                    android:title="Feedback" />
 
             </menu>
 
