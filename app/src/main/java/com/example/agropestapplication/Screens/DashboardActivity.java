@@ -3,11 +3,13 @@ package com.example.agropestapplication.Screens;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -156,12 +158,25 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.nav_faq:
                         Intent intent = new Intent(getApplicationContext(),FaqActivity.class);
                         startActivity(intent);
+                        break;
+                    case R.id.feedback:
+                        SendFeedback();
+                        break;
                     default:
                         return false;
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
 
                 return true;
+            }
+
+            private void SendFeedback() {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                String uriText = "mailto: " + Uri.encode("s92062495@ousl.lk") + "?subject=" +
+                        Uri.encode("Feedback about agroPEST" );
+                Uri uri = Uri.parse(uriText);
+                intent.setData(uri);
+                startActivity(Intent.createChooser(intent, "Send email"));
             }
 
             private void logout() {
