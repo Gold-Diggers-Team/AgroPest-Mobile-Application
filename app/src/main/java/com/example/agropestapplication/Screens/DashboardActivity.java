@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +44,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    ImageButton drawerButton;
+    ImageButton drawerButton,updateProfileButton;
     CardView pesticides, fertilizer, profile, agriInfo;
     ImageSlider imageSlider;
     TextView name,username,email;
@@ -51,6 +52,43 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private FirebaseAuth mAuth;
+    private static final int UPDATE_PROFILE_REQUEST = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == UPDATE_PROFILE_REQUEST && resultCode == RESULT_OK) {
+            updateDashboardUI();
+        }
+    }
+
+    //Update dashboard Ui user details when user update his details
+    private void updateDashboardUI() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        User user = dataSnapshot.getValue(User.class);
+                        if (user != null) {
+                            name.setText(user.getUsername());
+                            username.setText(user.getUsername());
+                            Glide.with(getApplicationContext()).load(user.getImageUrl()).into(userImage);
+                            Glide.with(getApplicationContext()).load(user.getImageUrl()).into(image);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Log.e("DatabaseError", "Error reading user details", databaseError.toException());
+                }
+            });
+        }
+    }
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -70,13 +108,14 @@ public class DashboardActivity extends AppCompatActivity {
         name = findViewById(R.id.textView5);
         userImage = findViewById(R.id.userImage);
 
+        //Access elements of the drawer header section
         View header = navigationView.getHeaderView(0);
         image = header.findViewById(R.id.userImage);
         username = header.findViewById(R.id.name);
         email = header.findViewById(R.id.email);
+        updateProfileButton = header.findViewById(R.id.updateProfileButton);
 
         mAuth = FirebaseAuth.getInstance();
-
         // Inside mAuth.addAuthStateListener
         mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -118,6 +157,16 @@ public class DashboardActivity extends AppCompatActivity {
                     startActivity(intent);
                     // Don't call finish() here
                 }
+            }
+        });
+
+
+
+
+        updateProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getApplicationContext(), UpdateProfileActivity.class), UPDATE_PROFILE_REQUEST);
             }
         });
 
@@ -220,6 +269,8 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), AgriServiceActivity.class));
             }
         });
+
+
     }
     // Implement device back button.
     // if the user click  the back button, user can see the alert dialog box

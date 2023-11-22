@@ -234,7 +234,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-13dp"
         android:background="@drawable/select_image"
-        android:src="@drawable/camera"
+        android:src="@drawable/add_image"
         app:layout_constraintBottom_toBottomOf="@+id/userImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
