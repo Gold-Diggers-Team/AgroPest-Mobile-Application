@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -20,6 +21,7 @@ public class FertilizerActivity extends AppCompatActivity {
         CardView checkFertilizer = findViewById(R.id.checkFertilizer);
         CardView detailsFertilizer = findViewById(R.id.detailsFertilizer);
         CardView about = findViewById(R.id.about);
+        ImageButton imageButton = findViewById(R.id.imageButton);
 
         checkFertilizer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,5 +41,12 @@ public class FertilizerActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), AboutFertlizerActivity.class));
             }
         });
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+            }
+        });
+
     }
 }
