@@ -26,20 +26,20 @@
 
     <ImageView
         android:id="@+id/userImageCircle"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:src="@drawable/shape_two"
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header"
         app:layout_constraintVertical_bias="0.445" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/userImageProfile"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:src="@drawable/user"
         app:layout_constraintBottom_toBottomOf="@+id/userImageCircle"
         app:layout_constraintEnd_toEndOf="@+id/userImageCircle"
@@ -47,6 +47,7 @@
         app:layout_constraintStart_toStartOf="@+id/userImageCircle"
         app:layout_constraintTop_toTopOf="@+id/userImageCircle"
         app:layout_constraintVertical_bias="0.48" />
+
 
     <TextView
         android:id="@+id/textView7"
@@ -58,9 +59,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="@+id/header"
+        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="@+id/header" />
-
+        app:layout_constraintTop_toTopOf="@+id/header"
+        app:layout_constraintVertical_bias="0.51" />
 
     <ImageButton
         android:id="@+id/backButtonFromProfile"
@@ -73,9 +75,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
-
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.48000002" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -244,7 +247,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/white"
-        android:text="@string/edit_your_details"
+        android:text="@string/edit_your_details_two"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="16sp"
