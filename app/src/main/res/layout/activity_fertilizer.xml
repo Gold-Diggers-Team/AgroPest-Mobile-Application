@@ -27,17 +27,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:letterSpacing="0.3"
-        android:text="Fertilizer"
+        android:letterSpacing="0.1"
+        android:text="@string/fertiliser"
         android:textColor="#EEAF4B"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintVertical_bias="0.48000002" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -55,7 +55,7 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#D7E0EA"
+        android:background="@color/transparent_white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
@@ -109,7 +109,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="About "
+                    android:text="@string/about"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
@@ -161,7 +161,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Available Fertilizers &amp; Price "
+                    android:text="@string/available_fertilizers_amp_price"
                     android:textAlignment="center"
                     android:textStyle="bold"
                     android:textAllCaps="false"
@@ -212,7 +212,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Details according to the crop products "
+                    android:text="@string/details_according_to_n_the_crops"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:textAllCaps="false"
