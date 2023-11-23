@@ -28,9 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Update Profile"
+        android:text="@string/edit_your_details"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -41,7 +41,7 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
@@ -72,7 +72,7 @@
             android:background="@drawable/edit_text_field"
             android:drawableStart="@drawable/person"
             android:drawablePadding="10dp"
-            android:hint="Name"
+            android:hint="@string/name"
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -105,7 +105,7 @@
             android:background="@drawable/edit_text_field"
             android:drawableStart="@drawable/phone"
             android:drawablePadding="10dp"
-            android:hint="Phone number"
+            android:hint="@string/phone_number"
             android:textColor="@color/black"
             android:textSize="17sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -117,7 +117,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/white"
-        android:text="Update Profile"
+        android:text="@string/update_profile"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="16sp"

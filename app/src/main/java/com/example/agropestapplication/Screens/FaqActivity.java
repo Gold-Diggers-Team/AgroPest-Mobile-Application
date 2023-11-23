@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.agropestapplication.Adapter.AgricultureServiceAdapter;
 import com.example.agropestapplication.Adapter.FAQuestionAdapter;
@@ -36,6 +39,14 @@ public class FaqActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("FAQ");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ImageButton imageButton = findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+            }
+        });
 
         list = new ArrayList<>();
         adapter = new FAQuestionAdapter(this, list);

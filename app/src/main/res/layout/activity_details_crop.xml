@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:letterSpacing="0.1"
-        android:text="Details according to \n the crops"
+        android:text="@string/details_according_to_n_the_crops"
         android:textAlignment="center"
         android:textColor="#EEAF4B"
         android:textSize="15sp"
@@ -56,19 +56,31 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#D7E0EA"
+        android:background="@color/transparent_white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="@+id/imageView7"
         app:srcCompat="@drawable/baseline_arrow_back_24" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scroll_down_to_see_more"
+        android:textColor="@color/light_gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/items"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="1.0" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/items"
         android:layout_width="match_parent"
         android:layout_height="612dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="150dp"
         android:padding="10dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"

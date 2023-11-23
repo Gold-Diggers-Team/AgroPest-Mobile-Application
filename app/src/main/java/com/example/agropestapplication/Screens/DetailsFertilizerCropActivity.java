@@ -2,6 +2,7 @@ package com.example.agropestapplication.Screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.agropestapplication.R;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.agropestapplication.Adapter.Adapter;
 import com.example.agropestapplication.Adapter.AgricultureServiceAdapter;
@@ -44,6 +47,14 @@ public class DetailsFertilizerCropActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("form2");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ImageButton imageButton = findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FertilizerActivity.class));
+            }
+        });
 
         list = new ArrayList<>();
         adapter = new DetalisAdapter(this, list);

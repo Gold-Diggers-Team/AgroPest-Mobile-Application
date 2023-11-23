@@ -3,9 +3,12 @@ package com.example.agropestapplication.Screens;
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +49,15 @@ public class FertilizerPrice extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("form2");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ImageButton imageButton = findViewById(R.id.imageButton);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+            }
+        });
 
         list = new ArrayList<>();
         adapter = new Adapter(this, list);

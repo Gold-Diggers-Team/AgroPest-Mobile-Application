@@ -1,16 +1,22 @@
 package com.example.agropestapplication.Screens;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,11 +31,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Locale;
+
 public class LoginActivity extends AppCompatActivity {
 
     private Button signUp,logIn,forgetPassword;
     EditText username, password;
     FirebaseAuth mAuth;
+    Spinner selectLanguage;
+    public static final String[] Languages = {"Select Language","English","Sinhala"};
 
 
     @Override
@@ -55,6 +65,34 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameLogin);
         password = findViewById(R.id.passwordLogin);
         forgetPassword = findViewById(R.id.forgetPassword);
+        selectLanguage = findViewById(R.id.selectLanguage);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Languages);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        selectLanguage.setAdapter(adapter);
+        selectLanguage.setSelection(0);
+        selectLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedLag = parent.getItemAtPosition(position).toString();
+                if(selectedLag.equals("English")){
+                    setLocale(LoginActivity.this,"en");
+                    finish();
+                    startActivity(getIntent());
+
+                }else if(selectedLag.equals("Sinhala")){
+                    setLocale(LoginActivity.this,"si");
+                    finish();
+                    startActivity(getIntent());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -131,6 +169,16 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+    private void setLocale(Activity activity, String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+        Resources resources = activity.getResources();
+        Configuration configuration = new Configuration(resources.getConfiguration());
+        configuration.setLocale(locale);
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+    }
+
 
     // Implement device back button.
     // if the user click  the back button, user can see the alert dialog box

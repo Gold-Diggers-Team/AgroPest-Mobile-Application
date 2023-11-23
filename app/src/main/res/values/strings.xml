@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AgroPEST Application</string>
+    <string name="app_name" translatable="false">AgroPEST Application</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="title_activity_profile">ProfileActivity</string>
@@ -9,50 +9,59 @@
     <string name="email">Email</string>
     <string name="name">Name</string>
     <string name="displayQuestion">DisplayQuestion</string>
-    <string name="description">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</string>
+    <string name="description" translatable="false">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</string>
     <string name="title_activity_details_fertilizer_crop">DetailsFertilizerCropActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="lorem_ipsum">
+    <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
-        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
-        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
-        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
-        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
-        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
-        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
-        bibendum, vel congue leo egestas.\n\n
-        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
-        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
-        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
-        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
-        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
-        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
-        est.\n\n
-        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
-        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
-        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
-        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
-        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
-        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
-        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
-        convallis.\n\n
-        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
-        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
-        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+        dui nec risus.
     </string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="provide_comprehensive_information_on_pesticides">Provide comprehensive information on pesticides</string>
+    <string name="include_details_of_the_available_pesticides">Includes details of the available pesticides</string>
+    <string name="include_details_of_the_out_of_stock_pesticides">Includes details of the out of stock pesticides</string>
+    <string name="include_prices_of_the_available_pesticides">Includes prices of the available pesticides</string>
+    <string name="provide_comprehensive_information_on_fertiliser">Provide comprehensive information on fertiliser</string>
+    <string name="include_details_of_the_available_fertiliser">Includes details of the available fertiliser</string>
+    <string name="include_details_of_the_out_of_stock_fertiliser">Includes details of the out of stock fertiliser</string>
+    <string name="include_prices_of_the_available_fertiliser">Includes prices of the available fertiliser</string>
+    <string name="objectives">Objectives</string>
+    <string name="about">About</string>
+    <string name="agriculture_services_n_locations">Agriculture Services \n Locations</string>
+    <string name="welcome">Welcome</string>
+    <string name="how_can_agropest_help_you">How can agroPEST help you ?</string>
+    <string name="pesticides">Pesticides</string>
+    <string name="fertiliser">Fertiliser</string>
+    <string name="profile">Profile</string>
+    <string name="details_according_to_n_the_crops">Details according to \n the crops</string>
+    <string name="faq">FAQ</string>
+    <string name="available_fertilizers_amp_price"><![CDATA[Available Fertilizers & Price]]></string>
+    <string name="available_fertilizer_n_amp_price"><![CDATA[Available Fertilizer \n& Price]]></string>
+    <string name="sign_in">Sign in</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="signup">SignUp</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="available_pesticides_n_amp_price"><![CDATA[Available Pesticides \n& Price]]></string>
+    <string name="if_you_want_to_edit_profile">If you want to edit profile ?</string>
+    <string name="edit_your_details">Edit your details</string>
+    <string name="create_account">Create Account</string>
+    <string name="phone_number">Phone number</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="existing_user_go_to_sign_in_page">Existing user! Go to Sign in page</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="edit_your_details_two">Edit your details</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="feedback">Feedback</string>
+    <string name="communicate">Communicate</string>
+    <string name="logout">Logout</string>
+    <string name="guidelines">Guidelines</string>
+    <string name="select_language">Select language</string>
+    <string name="scroll_down_to_see_more">Scroll down to see more</string>
+
 </resources>

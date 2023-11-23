@@ -12,9 +12,12 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.agropestapplication.Adapter.Adapter;
 import com.example.agropestapplication.Model.ModelClass;
@@ -49,6 +52,13 @@ public class PesticidePrice extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("form1");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ImageButton imageButton = findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PesticidesActivity.class));
+            }
+        });
 
         list = new ArrayList<>();
         adapter = new Adapter(this, list);

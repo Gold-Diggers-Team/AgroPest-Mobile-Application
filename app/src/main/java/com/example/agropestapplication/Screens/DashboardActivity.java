@@ -1,17 +1,24 @@
 package com.example.agropestapplication.Screens;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +46,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -88,6 +96,15 @@ public class DashboardActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void setLocale(Activity activity, String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+        Resources resources = activity.getResources();
+        Configuration configuration = new Configuration(resources.getConfiguration());
+        configuration.setLocale(locale);
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -211,6 +228,9 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.feedback:
                         SendFeedback();
                         break;
+                    case R.id.nav_lang:
+                        showLanguageSelectionDialog();
+                        break;
                     default:
                         return false;
                 }
@@ -218,6 +238,31 @@ public class DashboardActivity extends AppCompatActivity {
 
                 return true;
             }
+
+            private void showLanguageSelectionDialog() {
+                String[] languageOptions = {"English", "Sinhala"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
+                builder.setTitle("Select Language") // Replace this with your desired title
+                        .setItems(languageOptions, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String selectedLanguage = (which == 0) ? "en" : "si"; // English or Sinhala
+                                setLocale(DashboardActivity.this, selectedLanguage);
+                                // Reload the activity
+                                recreate();
+                            }
+                        });
+                builder.show();
+
+                // Close the drawer after language selection
+                closeDrawer();
+            }
+
+            private void closeDrawer() {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+            }
+
 
             private void SendFeedback() {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
