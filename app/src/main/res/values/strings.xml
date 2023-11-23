@@ -55,11 +55,13 @@
     <string name="register">Register</string>
     <string name="existing_user_go_to_sign_in_page">Existing user! Go to Sign in page</string>
     <string name="update_profile">Update Profile</string>
+    <string name="edit_your_details_two">Edit your details</string>
     <string name="reset_password">Reset Password</string>
     <string name="feedback">Feedback</string>
     <string name="communicate">Communicate</string>
     <string name="logout">Logout</string>
     <string name="guidelines">Guidelines</string>
     <string name="select_language">Select language</string>
+    <string name="scroll_down_to_see_more">Scroll down to see more</string>
 
 </resources>
