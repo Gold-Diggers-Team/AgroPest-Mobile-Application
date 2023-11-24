@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
+            android:layout_marginTop="3dp"
             android:gravity="center_vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -35,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="department"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp" />
 
@@ -65,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Contact"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="@color/black"
                 android:layout_marginStart="10dp" />
 
@@ -84,7 +85,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginBottom="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="Contact"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:layout_marginStart="10dp" />
 
         </LinearLayout>

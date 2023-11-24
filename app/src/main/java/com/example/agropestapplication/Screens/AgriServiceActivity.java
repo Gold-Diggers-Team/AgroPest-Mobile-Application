@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AgriServiceActivity extends AppCompatActivity {
 
@@ -55,11 +56,27 @@ public class AgriServiceActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                ArrayList<ModelClass> newList = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     ModelClass modelClass = dataSnapshot.getValue(ModelClass.class);
-                    list.add(modelClass);
+                    newList.add(modelClass);
                 }
-                adapter.notifyDataSetChanged();
+
+                for (ModelClass newItem : newList) {
+                    boolean isNewItem = true;
+                    for (ModelClass existingItem : list) {
+                        if (newItem.getDepName().equals(existingItem.getDepName()) && newItem.getLocation().equals( existingItem.getLocation()) && newItem.getTel().equals(existingItem.getTel())) {
+                            isNewItem = false;
+                            break;
+                        }
+                    }
+
+                    if (isNewItem) {
+                        list.add(newItem);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
             }
 
             @Override

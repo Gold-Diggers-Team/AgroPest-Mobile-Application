@@ -231,6 +231,10 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.nav_lang:
                         showLanguageSelectionDialog();
                         break;
+                    case R.id.nav_profile:
+                        Intent intent1 = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(intent1);
+                        break;
                     default:
                         return false;
                 }
