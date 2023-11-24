@@ -5,11 +5,6 @@
     <group android:checkableBehavior="single">
         <item
 
-            android:id="@+id/nav_cycle"
-            android:title="@string/guidelines" />
-
-        <item
-
             android:id="@+id/nav_lang"
             android:title="@string/select_language"
             android:actionLayout="@layout/spinner_layout"
