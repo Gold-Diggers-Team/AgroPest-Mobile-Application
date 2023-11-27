@@ -183,6 +183,7 @@
 
         </androidx.cardview.widget.CardView>
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/fertilizer"
             android:layout_width="150dp"
