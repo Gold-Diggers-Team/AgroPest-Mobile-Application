@@ -63,5 +63,11 @@
     <string name="guidelines">Guidelines</string>
     <string name="select_language">Select language</string>
     <string name="scroll_down_to_see_more">Scroll down to see more</string>
+    <string name="Email_is_required">Email is required</string>
+    <string name="Enter_a_valid_email">Enter a valid email</string>
+    <string name="Password_is_required">Password is required</string>
+    <string name="english">English</string>
+    <string name="sinhala">Sinhala</string>
+
 
 </resources>

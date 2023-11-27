@@ -9,16 +9,9 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,15 +45,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    ImageButton drawerButton,updateProfileButton;
+    private static final int UPDATE_PROFILE_REQUEST = 1;
+    ImageButton drawerButton, updateProfileButton;
     CardView pesticides, fertilizer, profile, agriInfo;
     ImageSlider imageSlider;
-    TextView name,username,email;
-    CircleImageView userImage,image;
+    TextView name, username, email;
+    CircleImageView userImage, image;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private FirebaseAuth mAuth;
-    private static final int UPDATE_PROFILE_REQUEST = 1;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -148,7 +141,6 @@ public class DashboardActivity extends AppCompatActivity {
                                 // User details found, update the UI
                                 User user = dataSnapshot.getValue(User.class);
                                 if (user != null) {
-                                    Log.d("DashboardActivity", "User details found. Username: " + user.getUsername());
 
                                     name.setText(user.getUsername());
                                     email.setText(user.getEmail());
@@ -156,7 +148,6 @@ public class DashboardActivity extends AppCompatActivity {
 
                                     Glide.with(getApplicationContext()).load(user.getImageUrl()).into(userImage);
                                     Glide.with(getApplicationContext()).load(user.getImageUrl()).into(image);
-                                    Log.e("DashboardActivity", "User imageUrl is empty");
 
                                 }
                             }
@@ -176,8 +167,6 @@ public class DashboardActivity extends AppCompatActivity {
                 }
             }
         });
-
-
 
 
         updateProfileButton.setOnClickListener(new View.OnClickListener() {
@@ -222,7 +211,7 @@ public class DashboardActivity extends AppCompatActivity {
                         logout();
                         break;
                     case R.id.nav_faq:
-                        Intent intent = new Intent(getApplicationContext(),FaqActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), FaqActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.feedback:
@@ -245,8 +234,10 @@ public class DashboardActivity extends AppCompatActivity {
 
             private void showLanguageSelectionDialog() {
                 String[] languageOptions = {"English", "Sinhala"};
+                languageOptions[0] = getString(R.string.english);
+                languageOptions[1] = getString(R.string.sinhala);
                 AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
-                builder.setTitle("Select Language") // Replace this with your desired title
+                builder.setTitle(getString(R.string.select_language)) // Replace this with your desired title
                         .setItems(languageOptions, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 String selectedLanguage = (which == 0) ? "en" : "si"; // English or Sinhala
@@ -271,7 +262,7 @@ public class DashboardActivity extends AppCompatActivity {
             private void SendFeedback() {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 String uriText = "mailto: " + Uri.encode("s92062495@ousl.lk") + "?subject=" +
-                        Uri.encode("Feedback about agroPEST" );
+                        Uri.encode("Feedback about agroPEST");
                 Uri uri = Uri.parse(uriText);
                 intent.setData(uri);
                 startActivity(Intent.createChooser(intent, "Send email"));
@@ -321,9 +312,10 @@ public class DashboardActivity extends AppCompatActivity {
 
 
     }
+
     // Implement device back button.
     // if the user click  the back button, user can see the alert dialog box
-    public void onBackPressed(){
+    public void onBackPressed() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(DashboardActivity.this);
         alertDialog.setTitle("Exit App");
         alertDialog.setMessage("Do you want to exit this app ?");

@@ -53,4 +53,10 @@
     <string name="guidelines">මාර්ගෝපදේශ</string>
     <string name="select_language">භාෂාව තෝරන්න</string>
     <string name="scroll_down_to_see_more">තව බැලීමට පහළට යන්න</string>
+    <string name="Email_is_required">ඊ තැපෑල අවශ්‍යයි</string>
+    <string name="Enter_a_valid_email">වලංගු ඊ තැපෑලක් ඇතුළු කරන්න</string>
+    <string name="Password_is_required">මුරපදය අවශ්යයි</string>
+    <string name="english">ඉංග්රීසි</string>
+    <string name="sinhala">සිංහල</string>
+
 </resources>

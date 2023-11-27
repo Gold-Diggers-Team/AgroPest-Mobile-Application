@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -67,6 +68,10 @@ public class LoginActivity extends AppCompatActivity {
         forgetPassword = findViewById(R.id.forgetPassword);
         selectLanguage = findViewById(R.id.selectLanguage);
 
+        Languages[0] = getString(R.string.select_language);
+        Languages[1] =getString(R.string.english);
+        Languages[2] = getString(R.string.sinhala);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Languages);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectLanguage.setAdapter(adapter);
@@ -75,12 +80,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedLag = parent.getItemAtPosition(position).toString();
-                if(selectedLag.equals("English")){
+                if(selectedLag.equals(getString(R.string.english))){
                     setLocale(LoginActivity.this,"en");
                     finish();
                     startActivity(getIntent());
 
-                }else if(selectedLag.equals("Sinhala")){
+                }else if(selectedLag.equals(getString(R.string.sinhala))){
                     setLocale(LoginActivity.this,"si");
                     finish();
                     startActivity(getIntent());
@@ -122,15 +127,15 @@ public class LoginActivity extends AppCompatActivity {
                 String Password = password.getText().toString();
 
                 if(TextUtils.isEmpty(Username)){
-                    username.setError("Email is required");
+                    username.setError(getString(R.string.Email_is_required));
                     return;
                 }
                 if (!isValidEmail(Username)) {
-                    username.setError("Enter a valid email");
+                    username.setError(getString(R.string.Enter_a_valid_email));
                     return;
                 }
                 if(TextUtils.isEmpty(Password)){
-                    password.setError("Password is required");
+                    password.setError(getString(R.string.Password_is_required));
                     return;
                 }
 
