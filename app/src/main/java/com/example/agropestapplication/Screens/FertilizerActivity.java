@@ -38,7 +38,7 @@ public class FertilizerActivity extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AboutFertlizerActivity.class));
+                startActivity(new Intent(getApplicationContext(), AboutFertilizerActivity.class));
             }
         });
         imageButton.setOnClickListener(new View.OnClickListener() {

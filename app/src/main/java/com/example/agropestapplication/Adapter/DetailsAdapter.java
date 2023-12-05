@@ -2,7 +2,6 @@ package com.example.agropestapplication.Adapter;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
-import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,34 +10,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.codesgood.views.JustifiedTextView;
 import com.example.agropestapplication.Model.ModelClass;
 import com.example.agropestapplication.R;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class DetalisAdapter extends RecyclerView.Adapter<DetalisAdapter.ViewHolder>  implements TextToSpeech.OnInitListener {
+public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ViewHolder>  implements TextToSpeech.OnInitListener {
 
     Context context;
     ArrayList<ModelClass> list;
     TextToSpeech textToSpeech;
 
-    public DetalisAdapter(Context context, ArrayList<ModelClass> list) {
+    public DetailsAdapter(Context context, ArrayList<ModelClass> list) {
         this.context = context;
         this.list = list;
     }
 
     @NonNull
     @Override
-    public DetalisAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DetailsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.deatails_crop_products,parent,false);
         textToSpeech = new TextToSpeech(context, this);
-        return  new DetalisAdapter.ViewHolder(v);
+        return  new DetailsAdapter.ViewHolder(v);
     }
 
     @Override

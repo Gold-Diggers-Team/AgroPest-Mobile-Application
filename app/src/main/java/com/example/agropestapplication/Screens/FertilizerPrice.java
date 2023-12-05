@@ -1,20 +1,12 @@
 package com.example.agropestapplication.Screens;
 
-import android.Manifest;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +24,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.ArrayList;
 
 public class FertilizerPrice extends AppCompatActivity {
-    private static final String CHANNEL_ID = "channel_id";
-    private static final int NOTIFICATION_ID = 1;
 
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
@@ -63,14 +53,6 @@ public class FertilizerPrice extends AppCompatActivity {
         adapter = new Adapter(this, list);
         recyclerView.setAdapter(adapter);
 
-        // Set up Firebase Cloud Messaging
-        FirebaseApp.initializeApp(this);
-
-        // Add this line to subscribe to a topic (you can use a topic related to your new items)
-        FirebaseMessaging.getInstance().subscribeToTopic("new_items");
-
-        createNotificationChannel();
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -90,8 +72,6 @@ public class FertilizerPrice extends AppCompatActivity {
                     }
 
                     if (isNewItem) {
-                        sendFCMNotification("New Item Added", "A new fertilizer has been added Please check.");
-
                         list.add(newItem);
                         adapter.notifyDataSetChanged();
                     }
@@ -105,37 +85,5 @@ public class FertilizerPrice extends AppCompatActivity {
         });
     }
 
-    private void sendFCMNotification(String title, String body) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle(title)
-                .setContentText(body)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        notificationManager.notify(NOTIFICATION_ID, builder.build());
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Channel Name";
-            String description = "Channel Description";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
 }

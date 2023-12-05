@@ -8,18 +8,14 @@ import android.os.Bundle;
 import com.example.agropestapplication.R;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.agropestapplication.Adapter.Adapter;
-import com.example.agropestapplication.Adapter.AgricultureServiceAdapter;
-import com.example.agropestapplication.Adapter.DetalisAdapter;
+import com.example.agropestapplication.Adapter.DetailsAdapter;
 import com.example.agropestapplication.Model.ModelClass;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,14 +30,14 @@ public class DetailsFertilizerCropActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
-    DetalisAdapter adapter;
+    DetailsAdapter adapter;
     ArrayList<ModelClass> list;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_crop);
+        setContentView(R.layout.activity_details_fertilizer_crop);
 
         recyclerView = findViewById(R.id.items);
         databaseReference = FirebaseDatabase.getInstance().getReference("form2");
@@ -57,7 +53,7 @@ public class DetailsFertilizerCropActivity extends AppCompatActivity {
         });
 
         list = new ArrayList<>();
-        adapter = new DetalisAdapter(this, list);
+        adapter = new DetailsAdapter(this, list);
         recyclerView.setAdapter(adapter);
 
         databaseReference.addValueEventListener(new ValueEventListener() {

@@ -35,7 +35,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         String email = emailEditText.getText().toString().trim();
 
         if (email.isEmpty()) {
-           emailEditText.setError("Email is required");
+           emailEditText.setError(getString(R.string.Email_is_required));
             return;
         }
 
@@ -43,9 +43,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(getContext(),"Password reset email sent",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),getString(R.string.password_reset_email),Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(),"Failed to send reset email",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),getString(R.string.password_reset_email_failed),Toast.LENGTH_SHORT).show();
                     }
                 });
     }

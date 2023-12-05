@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,10 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.yalantis.ucrop.UCrop;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -43,9 +40,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class RegisterActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
-    private static final int CROP_IMAGE_REQUEST_CODE = 2;
     EditText username, email, password, phoneNumber, confirmPassword;
-    Button btnSignIn, btnReg;
+    Button btnReg;
     ImageButton selectImage;
     Uri filePath;
     Bitmap bitmap;
@@ -88,13 +84,12 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-
     private void openFileChooser() {
         // Start image picker
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.Select_a_Picture)), PICK_IMAGE_REQUEST);
     }
 
         @Override
@@ -118,54 +113,51 @@ public class RegisterActivity extends AppCompatActivity {
         final String phoneNumberText = phoneNumber.getText().toString().trim();
         final String usernameText = username.getText().toString().trim();
 
-
         if (TextUtils.isEmpty(usernameText)) {
-            username.setError("Username is required");
+            username.setError( getString(R.string.username_is_required));
             return;
         }
         if (TextUtils.isEmpty(emailText)) {
-            email.setError("Email is required");
+            email.setError( getString(R.string.Email_is_required));
             return;
         }
-
         if (TextUtils.isEmpty(phoneNumberText)) {
-            phoneNumber.setError("Phone number is required");
+            phoneNumber.setError( getString(R.string.phone_number_is_required));
             return;
         }
-
         if (TextUtils.isEmpty(passwordText)) {
-            password.setError("Password is required");
+            password.setError( getString(R.string.Password_is_required));
             return;
         }
         if (passwordText.length() <= 6) {
-            password.setError("Password should contain at least 6 characters");
+            password.setError( getString(R.string.password_validation));
             return;
         }
 
         if (!confirmPasswordText.matches(passwordText)) {
-            confirmPassword.setError("Password does not match");
+            confirmPassword.setError( getString(R.string.password_match));
+            return;
         }
 
 
         if (filePath == null) {
-            Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,  getString(R.string.Please_select_an_image), Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Show a progress dialog
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Registering...");
+        progressDialog.setMessage( getString(R.string.registering));
         progressDialog.show();
 
-
-// Check if the user already exists
+        // Check if the user already exists
         mAuth.fetchSignInMethodsForEmail(emailText).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
             @Override
             public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
                 if (task.isSuccessful()) {
                     SignInMethodQueryResult result = task.getResult();
                     if (result != null && result.getSignInMethods() != null && result.getSignInMethods().size() > 0) {
-                        Toast.makeText(RegisterActivity.this, "User with this email already exists. Please sign in.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
                         // User does not exist, proceed with registration
                         mAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -175,8 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     uploadImage(emailText, usernameText, phoneNumberText, passwordText);
                                 } else {
-                                    Log.e("AuthFailed", "Authentication failed: " + task.getException());
-                                    Toast.makeText(RegisterActivity.this, "Registration failed. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this,  getString(R.string.register_warning), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -184,13 +175,10 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     // Error occurred while checking for user existence
                     progressDialog.dismiss(); // Dismiss the progress dialog
-                    Toast.makeText(RegisterActivity.this, "Error checking user existence. Please try again.", Toast.LENGTH_SHORT).show();
                 }
             }
 
         });
-
-
     }
 
     private void uploadImage(final String emailText, final String usernameText, final String phoneNumberText, final String passwordText) {
@@ -220,7 +208,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 usersRef.child(user.getUid()).setValue(userProfile);
 
                                 // Show a success message
-                                Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, getString(R.string.registration_successful), Toast.LENGTH_SHORT).show();
 
                                 // Redirect to login activity
                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);

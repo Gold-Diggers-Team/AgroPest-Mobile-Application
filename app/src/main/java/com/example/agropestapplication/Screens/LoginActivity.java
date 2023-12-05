@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -67,6 +68,10 @@ public class LoginActivity extends AppCompatActivity {
         forgetPassword = findViewById(R.id.forgetPassword);
         selectLanguage = findViewById(R.id.selectLanguage);
 
+        Languages[0] = getString(R.string.select_language);
+        Languages[1] =getString(R.string.english);
+        Languages[2] = getString(R.string.sinhala);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Languages);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectLanguage.setAdapter(adapter);
@@ -75,12 +80,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedLag = parent.getItemAtPosition(position).toString();
-                if(selectedLag.equals("English")){
+                if(selectedLag.equals(getString(R.string.english))){
                     setLocale(LoginActivity.this,"en");
                     finish();
                     startActivity(getIntent());
 
-                }else if(selectedLag.equals("Sinhala")){
+                }else if(selectedLag.equals(getString(R.string.sinhala))){
                     setLocale(LoginActivity.this,"si");
                     finish();
                     startActivity(getIntent());
@@ -122,21 +127,21 @@ public class LoginActivity extends AppCompatActivity {
                 String Password = password.getText().toString();
 
                 if(TextUtils.isEmpty(Username)){
-                    username.setError("Email is required");
+                    username.setError(getString(R.string.Email_is_required));
                     return;
                 }
                 if (!isValidEmail(Username)) {
-                    username.setError("Enter a valid email");
+                    username.setError(getString(R.string.Enter_a_valid_email));
                     return;
                 }
                 if(TextUtils.isEmpty(Password)){
-                    password.setError("Password is required");
+                    password.setError(getString(R.string.Password_is_required));
                     return;
                 }
 
                 // Show a progress dialog
                 final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-                progressDialog.setMessage("Login...");
+                progressDialog.setMessage(getString(R.string.login));
                 progressDialog.show();
 
 
@@ -146,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     progressDialog.dismiss();
-                                    Toast.makeText(getApplicationContext(), "Login successful",
+                                    Toast.makeText(getApplicationContext(), getString(R.string.login_successful),
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
                                     startActivity(intent);
@@ -179,20 +184,19 @@ public class LoginActivity extends AppCompatActivity {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 
-
     // Implement device back button.
     // if the user click  the back button, user can see the alert dialog box
-    public void onBackPressed(){
+    public void onBackPressed() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginActivity.this);
-        alertDialog.setTitle("Exit App");
-        alertDialog.setMessage("Do you want to exit this app ?");
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDialog.setTitle(getString(R.string.exit_app));
+        alertDialog.setMessage(getString(R.string.exit_app_warning));
+        alertDialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finishAffinity();
             }
         });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

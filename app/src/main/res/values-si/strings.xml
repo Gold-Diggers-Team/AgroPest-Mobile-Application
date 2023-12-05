@@ -10,8 +10,6 @@
     <string name="name">නම</string>
     <string name="displayQuestion">DisplayQuestion</string>
     <string name="title_activity_details_fertilizer_crop">DetailsFertilizerCropActivity</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
     <string name="provide_comprehensive_information_on_pesticides">පළිබෝධනාශක පිළිබඳ සවිස්තර තොරතුරු සපයයි</string>
     <string name="include_details_of_the_available_pesticides">පවතින පළිබෝධනාශක පිළිබඳ විස්තර ඇතුළත් වේ</string>
     <string name="include_details_of_the_out_of_stock_pesticides">තොග නොමැති පළිබෝධනාශක පිළිබඳ විස්තර ඇතුළත් වේ</string>
@@ -28,7 +26,8 @@
     <string name="pesticides">පළිබෝධනාශක</string>
     <string name="fertiliser">පොහොර</string>
     <string name="profile">මගේ තොරතුරු</string>
-    <string name="details_according_to_n_the_crops">භෝග අනුව විස්තර</string>
+    <string name="details_according_to_n_the_pesticide">පළිබෝධනාශක \n අනුව විස්තර</string>
+    <string name="details_according_to_n_the_fertilizer">පොහොර \n අනුව විස්තර</string>
     <string name="faq">නිති අසන පැණ</string>
     <string name="available_fertilizers_amp_price"><![CDATA[ලබා ගත හැකි පොහොර \nසහ මිල ගණන්]]></string>
     <string name="available_fertilizer_n_amp_price"><![CDATA[ලබා ගත හැකි පොහොර \nසහ මිල ගණන්]]></string>
@@ -53,4 +52,38 @@
     <string name="guidelines">මාර්ගෝපදේශ</string>
     <string name="select_language">භාෂාව තෝරන්න</string>
     <string name="scroll_down_to_see_more">තව බැලීමට පහළට යන්න</string>
+
+    <string name="Email_is_required">ඊ තැපෑල අවශ්‍යයි</string>
+    <string name="Enter_a_valid_email">වලංගු ඊ තැපෑලක් ඇතුළු කරන්න</string>
+    <string name="Password_is_required">මුරපදය අවශ්යයි</string>
+    <string name="username_is_required">පරිශීලක නාමය අවශ්යයි</string>
+    <string name="phone_number_is_required">දුරකථන අංකය අවශ්‍යයි</string>
+    <string name="password_validation">මුරපදයේ අවම වශයෙන් අක්ෂර 6ක් වත් අඩංගු විය යුතුය</string>
+    <string name="password_match">මුරපදය නොගැලපේ</string>
+    <string name="Please_select_an_image">කරුණාකර පින්තූරයක් තෝරන්න</string>
+    <string name="Select_a_Picture">පින්තූරයක් තෝරන්න</string>
+
+    <string name="registering">ලියාපදිංචි වෙමින් පවති…</string>
+    <string name="register_warning">මෙම විද්‍යුත් තැපෑල සහිත පරිශීලකයා දැනටමත් සිටී. කරුණාකර පුරනය වන්න.</string>
+    <string name="registration_failed">ලියාපදිංචි අසමත්</string>
+    <string name="registration_successful">ලියාපදිංචිය සාර්ථකයි</string>
+
+    <string name="updating_profile">පැතිකඩ යාවත්කාලීන වෙමින් පවති… </string>
+    <string name="update_successful">පැතිකඩ සාර්ථකව යාවත්කාලීන කරන ලදී</string>
+    <string name="update_failed">පැතිකඩ යාවත්කාලීන කිරීමට අසමත් විය</string>
+
+
+
+    <string name="english">ඉංග්රීසි</string>
+    <string name="sinhala">සිංහල</string>
+    <string name="exit_app">යෙදුමෙන් පිටවන්න</string>
+    <string name="exit_app_warning">ඔබට මෙම යෙදුමෙන් ඉවත් වීමට අවශ්‍යද?</string>
+    <string name="yes">ඔව්</string>
+    <string name="no">නැත</string>
+    <string name="login">පූරණය වෙමින් පවති…</string>
+    <string name="login_successful">පුරනය වීම සාර්ථකයි</string>
+
+    <string name="password_reset_email">මුරපද යළි පිහිටුවීමේ විද්‍යුත් තැපෑල යවා ඇත</string>
+    <string name="password_reset_email_failed">යළි පිහිටුවීමේ ඊමේල් යැවීමට අසමත් වි ඇත </string>
+
 </resources>

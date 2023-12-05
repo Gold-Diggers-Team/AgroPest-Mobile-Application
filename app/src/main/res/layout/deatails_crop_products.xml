@@ -43,7 +43,7 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/description"
+        android:text=""
         android:textStyle="bold"
         android:textColor="@color/white"
         android:layout_below="@id/image"

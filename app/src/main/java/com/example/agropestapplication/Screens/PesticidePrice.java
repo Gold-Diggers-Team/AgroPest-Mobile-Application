@@ -35,9 +35,6 @@ import java.util.Objects;
 
 public class PesticidePrice extends AppCompatActivity {
 
-    private static final String CHANNEL_ID = "channel_id";
-    private static final int NOTIFICATION_ID = 1;
-
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     Adapter adapter;
@@ -63,15 +60,6 @@ public class PesticidePrice extends AppCompatActivity {
         list = new ArrayList<>();
         adapter = new Adapter(this, list);
         recyclerView.setAdapter(adapter);
-
-        // Set up Firebase Cloud Messaging
-        FirebaseApp.initializeApp(this);
-
-        // Add this line to subscribe to a topic (you can use a topic related to your new items)
-        FirebaseMessaging.getInstance().subscribeToTopic("new_items");
-
-        createNotificationChannel();
-
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -105,18 +93,5 @@ public class PesticidePrice extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "My Channel";
-            String description = "Channel Description";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
     }
 }
