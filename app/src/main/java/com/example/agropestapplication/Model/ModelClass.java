@@ -3,8 +3,8 @@ package com.example.agropestapplication.Model;
 public class ModelClass {
     String description;
     String image;
-    String isAvailable;
-    String isAvailableFertilizer;
+    String isAvilable;
+    String isAvilableFertlizer;
     String name;
     String price;
     String depName,tel,location;
@@ -34,16 +34,16 @@ public class ModelClass {
         return description;
     }
 
-    public String getIsAvailableFertilizer() {
-        return isAvailableFertilizer;
+    public String getIsAvilableFertlizer() {
+        return isAvilableFertlizer;
     }
 
     public String getImage() {
         return image;
     }
 
-    public String getIsAvailable() {
-        return isAvailable;
+    public String getIsAvilable() {
+        return isAvilable;
     }
 
     public String getName() {
