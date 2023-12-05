@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -317,15 +318,15 @@ public class DashboardActivity extends AppCompatActivity {
     // if the user click  the back button, user can see the alert dialog box
     public void onBackPressed() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(DashboardActivity.this);
-        alertDialog.setTitle("Exit App");
-        alertDialog.setMessage("Do you want to exit this app ?");
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDialog.setTitle(getString(R.string.exit_app));
+        alertDialog.setMessage(getString(R.string.exit_app_warning));
+        alertDialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finishAffinity();
             }
         });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

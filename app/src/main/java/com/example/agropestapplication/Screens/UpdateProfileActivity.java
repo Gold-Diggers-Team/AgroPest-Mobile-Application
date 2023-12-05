@@ -110,16 +110,16 @@ public class UpdateProfileActivity extends AppCompatActivity {
         String updatePhoneNumberText = updatePhoneNumber.getText().toString().trim();
 
         if (TextUtils.isEmpty(updateNameText)) {
-            updateName.setError("Name is required");
+            updateName.setError(getString(R.string.username_is_required));
             return;
         }
         if (TextUtils.isEmpty(updatePhoneNumberText)) {
-            updatePhoneNumber.setError("Phone number is required");
+            updatePhoneNumber.setError(getString(R.string.phone_number_is_required));
             return;
         }
 
         if (currentUser != null) {
-            progressDialog.setMessage("Updating profile...");
+            progressDialog.setMessage(getString(R.string.update_profile));
             progressDialog.show();
 
             String userId = currentUser.getUid();
@@ -167,7 +167,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     // User details updated successfully
                     progressDialog.dismiss(); // Dismiss ProgressDialog on success
-                    Toast.makeText(UpdateProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateProfileActivity.this, getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
 
                     // Notify the DashboardActivity that the profile is updated
                     setResult(Activity.RESULT_OK);
@@ -176,7 +176,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     // Handle failure to update user details
                     progressDialog.dismiss(); // Dismiss ProgressDialog on failure
-                    Toast.makeText(UpdateProfileActivity.this, "Failed to update profile", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateProfileActivity.this, getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
                 });
     }
 }

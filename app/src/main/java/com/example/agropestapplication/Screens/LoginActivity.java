@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // Show a progress dialog
                 final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-                progressDialog.setMessage("Login...");
+                progressDialog.setMessage(getString(R.string.login));
                 progressDialog.show();
 
 
@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     progressDialog.dismiss();
-                                    Toast.makeText(getApplicationContext(), "Login successful",
+                                    Toast.makeText(getApplicationContext(), getString(R.string.login_successful),
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
                                     startActivity(intent);
@@ -184,20 +184,19 @@ public class LoginActivity extends AppCompatActivity {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 
-
     // Implement device back button.
     // if the user click  the back button, user can see the alert dialog box
-    public void onBackPressed(){
+    public void onBackPressed() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginActivity.this);
-        alertDialog.setTitle("Exit App");
-        alertDialog.setMessage("Do you want to exit this app ?");
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDialog.setTitle(getString(R.string.exit_app));
+        alertDialog.setMessage(getString(R.string.exit_app_warning));
+        alertDialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finishAffinity();
             }
         });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
