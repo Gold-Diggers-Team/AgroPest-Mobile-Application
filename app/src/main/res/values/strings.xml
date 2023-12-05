@@ -9,19 +9,8 @@
     <string name="email">Email</string>
     <string name="name">Name</string>
     <string name="displayQuestion">DisplayQuestion</string>
-    <string name="description" translatable="false">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</string>
     <string name="title_activity_details_fertilizer_crop">DetailsFertilizerCropActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label" translatable="false">First Fragment</string>
-    <string name="second_fragment_label" translatable="false">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="lorem_ipsum" translatable="false">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
-        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus.
-    </string>
     <string name="provide_comprehensive_information_on_pesticides">Provide comprehensive information on pesticides</string>
     <string name="include_details_of_the_available_pesticides">Includes details of the available pesticides</string>
     <string name="include_details_of_the_out_of_stock_pesticides">Includes details of the out of stock pesticides</string>
@@ -35,10 +24,11 @@
     <string name="agriculture_services_n_locations">Agriculture Services \n Locations</string>
     <string name="welcome">Welcome</string>
     <string name="how_can_agropest_help_you">How can agroPEST help you ?</string>
-    <string name="pesticides">Pesticides</string>
+    <string name="pesticides">Pesticide</string>
     <string name="fertiliser">Fertiliser</string>
     <string name="profile">Profile</string>
-    <string name="details_according_to_n_the_crops">Details according to \n the crops</string>
+    <string name="details_according_to_n_the_pesticide">Details according to \n the pesticides</string>
+    <string name="details_according_to_n_the_fertilizer">Details according to \n the fertilizer</string>
     <string name="faq">FAQ</string>
     <string name="available_fertilizers_amp_price"><![CDATA[Available Fertilizers & Price]]></string>
     <string name="available_fertilizer_n_amp_price"><![CDATA[Available Fertilizer \n& Price]]></string>
@@ -63,11 +53,40 @@
     <string name="guidelines">Guidelines</string>
     <string name="select_language">Select language</string>
     <string name="scroll_down_to_see_more">Scroll down to see more</string>
+
     <string name="Email_is_required">Email is required</string>
     <string name="Enter_a_valid_email">Enter a valid email</string>
     <string name="Password_is_required">Password is required</string>
+    <string name="username_is_required">Username is required</string>
+    <string name="phone_number_is_required">Phone number is required</string>
+    <string name="password_validation">Password should contain at least 6 characters</string>
+    <string name="password_match">Password does not match</string>
+    <string name="Please_select_an_image">Please select an Picture</string>
+    <string name="Select_a_Picture">Select a Picture</string>
+
+    <string name="registering">Registering…</string>
+    <string name="register_warning">User with this email already exists. Please sign in</string>
+    <string name="registration_failed">Registration failed</string>
+    <string name="registration_successful">Registration successful</string>
+
+    <string name="updating_profile">Updating profile…</string>
+    <string name="update_successful">Profile updated successfully</string>
+    <string name="update_failed">Failed to  update profile</string>
+
+
     <string name="english">English</string>
     <string name="sinhala">Sinhala</string>
+    <string name="exit_app">Exit App</string>
+    <string name="exit_app_warning">Do you want to exit this app ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="login">Login…</string>
+    <string name="login_successful">Login successful</string>
+
+    <string name="password_reset_email">Password reset email sent</string>
+    <string name="password_reset_email_failed">Failed to send reset email</string>
+
+
 
 
 </resources>
