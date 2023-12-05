@@ -41,24 +41,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         ModelClass modelClass = list.get(position);
         holder.name.setText(modelClass.getName());
         holder.price.setText(modelClass.getPrice());
-        holder.isAvilable.setText(modelClass.getIsAvilable());
-        holder.isAvailableFertlizer.setText(modelClass.getIsAvilableFertlizer());
+        holder.isAvailable.setText(modelClass.getIsAvailable());
+        holder.isAvailableFertilizer.setText(modelClass.getIsAvailableFertilizer());
         Glide.with(context).load(list.get(position).getImage()).into(holder.image);
 
         // Check the condition (case-insensitive)
-        if ("Available".equalsIgnoreCase(modelClass.getIsAvilable())) {
+        if ("Available".equalsIgnoreCase(modelClass.getIsAvailable())) {
             // Set a custom Drawable when the condition is true
             holder.cardView.setBackgroundResource(R.color.is_avilable);
-        }else if("Out-of Stock".equalsIgnoreCase(modelClass.getIsAvilable())){
+        }else if("Out-of Stock".equalsIgnoreCase(modelClass.getIsAvailable())){
             holder.cardView.setBackgroundResource(R.color.is_not_available);
         }
 
 
         // Check the condition (case-insensitive)
-        if ("Available".equalsIgnoreCase(modelClass.getIsAvilableFertlizer())) {
+        if ("Available".equalsIgnoreCase(modelClass.getIsAvailableFertilizer())) {
             // Set a custom Drawable when the condition is true
             holder.cardView.setBackgroundResource(R.color.is_avilable);
-        }else if("Out-of Stock".equalsIgnoreCase(modelClass.getIsAvilableFertlizer())){
+        }else if("Out-of Stock".equalsIgnoreCase(modelClass.getIsAvailableFertilizer())){
             holder.cardView.setBackgroundResource(R.color.is_not_available);
         }
 
@@ -71,7 +71,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public static class ViewHolder extends  RecyclerView.ViewHolder{
 
-        TextView name,price,isAvilable,isAvailableFertlizer;
+        TextView name,price, isAvailable, isAvailableFertilizer;
         CardView cardView;
         ImageView image;
         public ViewHolder(@NonNull View itemView) {
@@ -79,8 +79,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             image =itemView.findViewById(R.id.image);
             name = itemView.findViewById(R.id.name);
             price = itemView.findViewById(R.id.price);
-            isAvilable= itemView.findViewById(R.id.isAvailable);
-            isAvailableFertlizer = itemView.findViewById(R.id.isAvailableFertlizer);
+            isAvailable = itemView.findViewById(R.id.isAvailable);
+            isAvailableFertilizer = itemView.findViewById(R.id.isAvailableFertlizer);
             cardView = itemView.findViewById(R.id.isAvailableBack);
         }
     }

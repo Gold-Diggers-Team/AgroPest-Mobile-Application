@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 import com.example.agropestapplication.R;
 
-public class AboutFertlizerActivity extends AppCompatActivity {
+public class AboutFertilizerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
