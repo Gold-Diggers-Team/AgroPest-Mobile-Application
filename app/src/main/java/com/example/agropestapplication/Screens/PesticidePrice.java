@@ -35,9 +35,6 @@ import java.util.Objects;
 
 public class PesticidePrice extends AppCompatActivity {
 
-    private static final String CHANNEL_ID = "channel_id";
-    private static final int NOTIFICATION_ID = 1;
-
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     Adapter adapter;
@@ -64,15 +61,6 @@ public class PesticidePrice extends AppCompatActivity {
         adapter = new Adapter(this, list);
         recyclerView.setAdapter(adapter);
 
-        // Set up Firebase Cloud Messaging
-        FirebaseApp.initializeApp(this);
-
-        // Add this line to subscribe to a topic (you can use a topic related to your new items)
-        FirebaseMessaging.getInstance().subscribeToTopic("new_items");
-
-        createNotificationChannel();
-
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -94,7 +82,6 @@ public class PesticidePrice extends AppCompatActivity {
 
                     if (isNewItem) {
                         list.add(newItem);
-                        sendFCMNotification("New Item Added", "A new Pesticide has been added Please check.");
                         adapter.notifyDataSetChanged();
                     }
                 }
@@ -106,39 +93,5 @@ public class PesticidePrice extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void sendFCMNotification(String title, String body) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle(title)
-                .setContentText(body)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        notificationManager.notify(NOTIFICATION_ID, builder.build());
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "My Channel";
-            String description = "Channel Description";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
     }
 }
