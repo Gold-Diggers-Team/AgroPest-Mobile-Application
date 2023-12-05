@@ -11,7 +11,7 @@
     <color name="light_gray">#E2E2E2</color>
     <color name="light_blue">#0860A8</color>
     <color name="transparent_white">#00FFFFFF</color>
-    <color name="is_avilable">#4CAF50</color>
+    <color name="is_available">#4CAF50</color>
     <color name="is_not_available">#F44336</color>
 
 </resources>
