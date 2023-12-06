@@ -46,7 +46,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.isAvailableFertilizer.setText(modelClass.getIsAvilableFertlizer());
         Glide.with(context).load(list.get(position).getImage()).into(holder.image);
 
-        Log.d("Availability", "getAvailablePesticides: " + modelClass.getIsAvilable());
 
         // Check the condition (case-insensitive)
         if ("Available".equalsIgnoreCase(modelClass.getIsAvilable())) {

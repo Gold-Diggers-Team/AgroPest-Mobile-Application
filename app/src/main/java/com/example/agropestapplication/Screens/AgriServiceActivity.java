@@ -35,7 +35,9 @@ public class AgriServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agri_service);
         recyclerView = findViewById(R.id.items);
+
         databaseReference = FirebaseDatabase.getInstance().getReference("form");
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -58,6 +60,7 @@ public class AgriServiceActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 ArrayList<ModelClass> newList = new ArrayList<>();
+
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     ModelClass modelClass = dataSnapshot.getValue(ModelClass.class);
                     newList.add(modelClass);

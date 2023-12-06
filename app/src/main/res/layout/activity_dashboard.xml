@@ -123,7 +123,7 @@
                     app:iss_auto_cycle="true"
                     app:iss_corner_radius="35"
                     app:iss_delay="1000"
-                    app:iss_period="1500"/>
+                    app:iss_period="1500" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -207,8 +207,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:background="@drawable/edit_text_field">
+                android:background="@drawable/edit_text_field"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/Fertilizer"
@@ -260,8 +260,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:background="@drawable/edit_text_field">
+                android:background="@drawable/edit_text_field"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/agriInformatiom"
@@ -310,8 +310,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:background="@drawable/edit_text_field">
+                android:background="@drawable/edit_text_field"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/Profile"
@@ -341,7 +341,6 @@
                     android:textStyle="bold" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
