@@ -124,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         if (!isValidEmail(emailText)) {
-            username.setError(getString(R.string.Enter_a_valid_email));
+            email.setError(getString(R.string.Enter_a_valid_email));
             return;
         }
         if (TextUtils.isEmpty(phoneNumberText)) {
