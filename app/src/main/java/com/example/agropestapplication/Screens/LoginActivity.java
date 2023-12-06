@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -36,20 +35,20 @@ import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button signUp,logIn,forgetPassword;
+    public static final String[] Languages = {"Select Language", "English", "Sinhala"};
+    // Initialize UI elements
+    Button signUp, logIn, forgetPassword;
     EditText username, password;
     FirebaseAuth mAuth;
     Spinner selectLanguage;
-    public static final String[] Languages = {"Select Language","English","Sinhala"};
-
 
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Check if the user is signed in and update UI accordingly
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+        if (currentUser != null) {
+            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
             startActivity(intent);
             finish();
         }
@@ -61,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Initialize UI elements
         signUp = findViewById(R.id.btnSignUp);
         logIn = findViewById(R.id.btnSignIn);
         username = findViewById(R.id.usernameLogin);
@@ -68,25 +68,27 @@ public class LoginActivity extends AppCompatActivity {
         forgetPassword = findViewById(R.id.forgetPassword);
         selectLanguage = findViewById(R.id.selectLanguage);
 
+        // Populate language array
         Languages[0] = getString(R.string.select_language);
-        Languages[1] =getString(R.string.english);
+        Languages[1] = getString(R.string.english);
         Languages[2] = getString(R.string.sinhala);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Languages);
+        // Set up the language spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Languages);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectLanguage.setAdapter(adapter);
         selectLanguage.setSelection(0);
         selectLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Handle language selection
                 String selectedLag = parent.getItemAtPosition(position).toString();
-                if(selectedLag.equals(getString(R.string.english))){
-                    setLocale(LoginActivity.this,"en");
+                if (selectedLag.equals(getString(R.string.english))) {
+                    setLocale(LoginActivity.this, "en");
                     finish();
                     startActivity(getIntent());
-
-                }else if(selectedLag.equals(getString(R.string.sinhala))){
-                    setLocale(LoginActivity.this,"si");
+                } else if (selectedLag.equals(getString(R.string.sinhala))) {
+                    setLocale(LoginActivity.this, "si");
                     finish();
                     startActivity(getIntent());
                 }
@@ -94,39 +96,39 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                // Handle when nothing is selected
             }
-
         });
 
+        // Initialize FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
 
-        // Implement sign up button
+        // Set up click listeners for buttons
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
 
-        // Implement sign up button
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Show the bottom sheet for password recovery
                 BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
                 bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
             }
         });
 
-
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // Validate and process login credentials
                 String Username = username.getText().toString().trim();
                 String Password = password.getText().toString();
 
-                if(TextUtils.isEmpty(Username)){
+                // Validation checks
+                if (TextUtils.isEmpty(Username)) {
                     username.setError(getString(R.string.Email_is_required));
                     return;
                 }
@@ -134,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                     username.setError(getString(R.string.Enter_a_valid_email));
                     return;
                 }
-                if(TextUtils.isEmpty(Password)){
+                if (TextUtils.isEmpty(Password)) {
                     password.setError(getString(R.string.Password_is_required));
                     return;
                 }
@@ -144,18 +146,20 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.setMessage(getString(R.string.login));
                 progressDialog.show();
 
-
+                // Authenticate with Firebase
                 mAuth.signInWithEmailAndPassword(Username, Password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    // Login successful, navigate to DashboardActivity
                                     progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), getString(R.string.login_successful),
                                             Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                                     startActivity(intent);
                                 } else {
+                                    // Login failed, show error message
                                     progressDialog.dismiss();
                                     Log.e("AuthenticationFailed", "Authentication failed: " + task.getException());
                                     Toast.makeText(getApplicationContext(), "Authentication failed.",
@@ -163,18 +167,15 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
             }
 
             private boolean isValidEmail(CharSequence target) {
                 return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
             }
-
-
         });
-
     }
 
+    // Set the locale for the application
     private void setLocale(Activity activity, String languageCode) {
         Locale locale = new Locale(languageCode);
         Locale.setDefault(locale);
@@ -184,8 +185,7 @@ public class LoginActivity extends AppCompatActivity {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 
-    // Implement device back button.
-    // if the user click  the back button, user can see the alert dialog box
+    // Handle back button press with an alert dialog
     public void onBackPressed() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginActivity.this);
         alertDialog.setTitle(getString(R.string.exit_app));
@@ -204,4 +204,5 @@ public class LoginActivity extends AppCompatActivity {
         });
         alertDialog.show();
     }
+
 }

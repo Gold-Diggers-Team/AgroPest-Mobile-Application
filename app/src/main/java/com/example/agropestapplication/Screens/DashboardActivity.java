@@ -262,7 +262,7 @@ public class DashboardActivity extends AppCompatActivity {
 
             private void SendFeedback() {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
-                String uriText = "mailto: " + Uri.encode("s92062495@ousl.lk") + "?subject=" +
+                String uriText = "mailto: " + Uri.encode("sathsara.psf99@gmail.com") + "?subject=" +
                         Uri.encode("Feedback about agroPEST");
                 Uri uri = Uri.parse(uriText);
                 intent.setData(uri);

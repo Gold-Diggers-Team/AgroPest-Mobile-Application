@@ -5,7 +5,6 @@ import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -22,17 +21,19 @@ import java.util.Locale;
 
 public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ViewHolder> implements TextToSpeech.OnInitListener {
 
-    private Context context;
-    private ArrayList<ModelClass> list;
-    private TextToSpeech textToSpeech;
-    private ToggleButton toggleButton;
+    // Initializing the context, list, and TextToSpeech variables in the DetailsAdapter
+    Context context;
+    ArrayList<ModelClass> list;
+    TextToSpeech textToSpeech;
 
+    // DetailsAdapter constructor to set the context, list, and initialize TextToSpeech
     public DetailsAdapter(Context context, ArrayList<ModelClass> list) {
         this.context = context;
         this.list = list;
         textToSpeech = new TextToSpeech(context, this);
     }
 
+    // Inflating the view for each item in the RecyclerView
     @NonNull
     @Override
     public DetailsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,9 +41,13 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ViewHold
         return new DetailsAdapter.ViewHolder(v);
     }
 
+    // Binding the data to the ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // Getting the ModelClass object for the current position
         ModelClass modelClass = list.get(position);
+
+        // Setting data to the views in the ViewHolder
         holder.name.setText(modelClass.getName());
         holder.description.setText(modelClass.getDescription());
         Glide.with(context).load(list.get(position).getImage()).into(holder.image);
@@ -70,11 +75,13 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ViewHold
         });
     }
 
+    // Getting the total number of items in the RecyclerView
     @Override
     public int getItemCount() {
         return list.size();
     }
 
+    // TextToSpeech initialization callback method
     @Override
     public void onInit(int status) {
         if (status == TextToSpeech.SUCCESS) {
@@ -92,6 +99,7 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ViewHold
         }
     }
 
+    // Detach TextToSpeech from the RecyclerView when it's not needed
     @Override
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onDetachedFromRecyclerView(recyclerView);
@@ -101,20 +109,21 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ViewHold
         }
     }
 
+    // ViewHolder class to hold the views for each item in the RecyclerView
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView description;
         TextView name;
-        ImageButton speakAloud;
         ImageView image;
         ToggleButton toggleButton;
 
+        // ViewHolder constructor to initialize views
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             description = itemView.findViewById(R.id.description);
             image = itemView.findViewById(R.id.image);
-            speakAloud = itemView.findViewById(R.id.speakAloud);
             toggleButton = itemView.findViewById(R.id.toggleButton);
         }
     }
+
 }

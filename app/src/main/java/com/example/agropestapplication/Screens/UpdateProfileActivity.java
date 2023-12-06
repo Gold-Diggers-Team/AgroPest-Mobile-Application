@@ -90,13 +90,17 @@ public class UpdateProfileActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
+    // Handling the result of an activity started for result
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        // Check if the result is from the image selection request
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            // Get the selected image URI
             imageUri = data.getData();
             try {
+                // Convert the URI to a bitmap and set it to the ImageView
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
                 userUpdateImage.setImageBitmap(bitmap);
             } catch (IOException e) {
@@ -104,6 +108,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
             }
         }
     }
+
 
     private void updateProfile() {
         String updateNameText = updateName.getText().toString().trim();
