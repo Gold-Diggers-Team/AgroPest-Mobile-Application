@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -121,6 +122,11 @@ public class RegisterActivity extends AppCompatActivity {
             email.setError( getString(R.string.Email_is_required));
             return;
         }
+
+        if (!isValidEmail(emailText)) {
+            username.setError(getString(R.string.Enter_a_valid_email));
+            return;
+        }
         if (TextUtils.isEmpty(phoneNumberText)) {
             phoneNumber.setError( getString(R.string.phone_number_is_required));
             return;
@@ -178,7 +184,14 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
 
+
+
+
         });
+    }
+
+    private boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
     private void uploadImage(final String emailText, final String usernameText, final String phoneNumberText, final String passwordText) {
